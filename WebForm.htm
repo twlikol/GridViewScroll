@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	GridViewScroll with jQuery
+</title>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="gridviewScroll.min.js"></script>
+    <link href="GridviewScroll.css" rel="stylesheet" />
+    <style type="text/css">
+    	BODY,TD
+		{
+		    font-family: ·L³n¥¿¶ÂÅé, Tahoma, Arial, Verdana;
+		    font-weight: normal;
+		    font-size: 12px;
+		    color: #333333;
+		}
+    </style>
+</head>
+<body>
+	<table cellspacing="0" id="GridView1" style="width:100%;border-collapse:collapse;">
+		<tr class="GridviewScrollHeader">
+			<td colspan="2">Product</td><td rowspan="2">ListPrice</td><td rowspan="2">StandardCost</td><td colspan="2">Package</td><td rowspan="2">SafetyStockLevel</td><td rowspan="2">ReorderPoint</td><td rowspan="2">SellStartDate</td>
+		</tr><tr class="GridviewScrollHeader">
+			<td>Name</td><td>Number</td><td>Weight</td><td>Size</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">HL Mountain Frame - Black, 38</td><td style="background-color:#EFEFEF;">FR-M94B-38</td><td>1349.6000</td><td>739.0410</td><td>2.68</td><td>38</td><td>500</td><td>375</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">HL Mountain Frame - Silver, 38</td><td style="background-color:#EFEFEF;">FR-M94S-38</td><td>1364.5000</td><td>747.2002</td><td>2.68</td><td>38</td><td>500</td><td>375</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-150 Red, 62</td><td style="background-color:#EFEFEF;">BK-R93R-62</td><td>3578.2700</td><td>2171.2942</td><td>15.00</td><td>62</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-150 Red, 44</td><td style="background-color:#EFEFEF;">BK-R93R-44</td><td>3578.2700</td><td>2171.2942</td><td>13.77</td><td>44</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-150 Red, 48</td><td style="background-color:#EFEFEF;">BK-R93R-48</td><td>3578.2700</td><td>2171.2942</td><td>14.13</td><td>48</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-150 Red, 52</td><td style="background-color:#EFEFEF;">BK-R93R-52</td><td>3578.2700</td><td>2171.2942</td><td>14.42</td><td>52</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-150 Red, 56</td><td style="background-color:#EFEFEF;">BK-R93R-56</td><td>3578.2700</td><td>2171.2942</td><td>14.68</td><td>56</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-450 Red, 58</td><td style="background-color:#EFEFEF;">BK-R68R-58</td><td>1457.9900</td><td>884.7083</td><td>17.79</td><td>58</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-450 Red, 60</td><td style="background-color:#EFEFEF;">BK-R68R-60</td><td>1457.9900</td><td>884.7083</td><td>17.90</td><td>60</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-450 Red, 44</td><td style="background-color:#EFEFEF;">BK-R68R-44</td><td>1457.9900</td><td>884.7083</td><td>16.77</td><td>44</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-450 Red, 48</td><td style="background-color:#EFEFEF;">BK-R68R-48</td><td>1457.9900</td><td>884.7083</td><td>17.13</td><td>48</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-450 Red, 52</td><td style="background-color:#EFEFEF;">BK-R68R-52</td><td>1457.9900</td><td>884.7083</td><td>17.42</td><td>52</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Red, 58</td><td style="background-color:#EFEFEF;">BK-R50R-58</td><td>782.9900</td><td>486.7066</td><td>19.79</td><td>58</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Red, 60</td><td style="background-color:#EFEFEF;">BK-R50R-60</td><td>782.9900</td><td>486.7066</td><td>19.90</td><td>60</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Red, 62</td><td style="background-color:#EFEFEF;">BK-R50R-62</td><td>782.9900</td><td>486.7066</td><td>20.00</td><td>62</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Red, 44</td><td style="background-color:#EFEFEF;">BK-R50R-44</td><td>782.9900</td><td>486.7066</td><td>18.77</td><td>44</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Red, 48</td><td style="background-color:#EFEFEF;">BK-R50R-48</td><td>782.9900</td><td>486.7066</td><td>19.13</td><td>48</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Red, 52</td><td style="background-color:#EFEFEF;">BK-R50R-52</td><td>782.9900</td><td>486.7066</td><td>19.42</td><td>52</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Black, 58</td><td style="background-color:#EFEFEF;">BK-R50B-58</td><td>782.9900</td><td>486.7066</td><td>19.79</td><td>58</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Black, 60</td><td style="background-color:#EFEFEF;">BK-R50B-60</td><td>782.9900</td><td>486.7066</td><td>19.90</td><td>60</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Black, 62</td><td style="background-color:#EFEFEF;">BK-R50B-62</td><td>782.9900</td><td>486.7066</td><td>20.00</td><td>62</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Black, 44</td><td style="background-color:#EFEFEF;">BK-R50B-44</td><td>782.9900</td><td>486.7066</td><td>18.77</td><td>44</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Black, 48</td><td style="background-color:#EFEFEF;">BK-R50B-48</td><td>782.9900</td><td>486.7066</td><td>19.13</td><td>48</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Road-650 Black, 52</td><td style="background-color:#EFEFEF;">BK-R50B-52</td><td>782.9900</td><td>486.7066</td><td>19.42</td><td>52</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Mountain-100 Silver, 38</td><td style="background-color:#EFEFEF;">BK-M82S-38</td><td>3399.9900</td><td>1912.1544</td><td>20.35</td><td>38</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Mountain-100 Silver, 42</td><td style="background-color:#EFEFEF;">BK-M82S-42</td><td>3399.9900</td><td>1912.1544</td><td>20.77</td><td>42</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Mountain-100 Silver, 44</td><td style="background-color:#EFEFEF;">BK-M82S-44</td><td>3399.9900</td><td>1912.1544</td><td>21.13</td><td>44</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Mountain-100 Silver, 48</td><td style="background-color:#EFEFEF;">BK-M82S-48</td><td>3399.9900</td><td>1912.1544</td><td>21.42</td><td>48</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Mountain-100 Black, 38</td><td style="background-color:#EFEFEF;">BK-M82B-38</td><td>3374.9900</td><td>1898.0944</td><td>20.35</td><td>38</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr><tr class="GridviewScrollItem">
+			<td style="background-color:#EFEFEF;">Mountain-100 Black, 42</td><td style="background-color:#EFEFEF;">BK-M82B-42</td><td>3374.9900</td><td>1898.0944</td><td>20.77</td><td>42</td><td>100</td><td>75</td><td>7/1/2005 12:00:00 AM</td>
+		</tr>
+	</table>
+    <script type="text/javascript">
+	    $(document).ready(function () {
+	        gridviewScroll();
+	    });
+	
+	    function gridviewScroll() {
+	        gridView1 = $('#GridView1').gridviewScroll({
+                width: 600,
+                height: 300,
+                railcolor: "#F0F0F0",
+                barcolor: "#CDCDCD",
+                barhovercolor: "#606060",
+                bgcolor: "#F0F0F0",
+                freezesize: 1,
+                arrowsize: 30,
+                varrowtopimg: "Images/arrowvt.png",
+                varrowbottomimg: "Images/arrowvb.png",
+                harrowleftimg: "Images/arrowhl.png",
+                harrowrightimg: "Images/arrowhr.png",
+                headerrowcount: 2,
+                railsize: 16,
+                barsize: 8
+            });
+	    }
+	</script>
+</body>
+</html>
