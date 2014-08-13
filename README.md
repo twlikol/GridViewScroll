@@ -5,16 +5,17 @@ If you have any ideas, please let us know.
 
 ###Support features
 * Freeze HeaderRow and FooterRow (both only 1 row)
-* ASP.NET GridView Pager Support
-* RTL Support
-* Default Browser Scrollbar
+* Support ASP.NET GridView pager
+* Support RTL
+* Default scrollbar of browser
 
 ###Developing features
-* More Freeze HeaderRow and FooterRow Count
-* HeaderRow and FooterRow Cell Merge
-* Freeze Column
-* More Public Methods or Events
-* Integrate Custom Modules
+* More freeze HeaderRow and FooterRow count
+* HeaderRow and FooterRow cell merge
+* Freeze column
+* More public methods or events
+* Integrate custom modules
+* Performance improvement
 
 ###Screenshots
 <table cellspacing='0' cellpadding='0' border='0' style='width:100%'>
