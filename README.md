@@ -16,6 +16,20 @@ If you have any ideas, please let us know.
 * More Public Methods or Events
 * Integrate Custom Modules
 
+###Screenshots
+<table cellspacing='0' cellpadding='0' border='0' style='width:100%'>
+<tr>
+<td valign='top'>
+Freeze HeaderRow and FooterRow<br/>
+<img border="0" src="https://cloud.githubusercontent.com/assets/1629492/3908664/c8a67bc0-2305-11e4-88d3-e9b70f3cc59d.png"></td>
+<td valign='top'>
+RTL Support<br/>
+<img border="0" src="https://cloud.githubusercontent.com/assets/1629492/3908665/cad9d7d4-2305-11e4-8ff2-fa8fd222dac9.png"></td>
+</tr>
+</table>
+
+
+
 ##GridViewScroll with jQuery (v0.9.6.8)
 Freeze column and fixed header in Table or GridView
 
