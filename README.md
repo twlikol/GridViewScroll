@@ -22,10 +22,10 @@ If you have any ideas, please let us know.
 <tr>
 <td valign='top'>
 Freeze HeaderRow and FooterRow<br/>
-<img border="0" width="300px" src="https://cloud.githubusercontent.com/assets/1629492/3908664/c8a67bc0-2305-11e4-88d3-e9b70f3cc59d.png"></td>
+<img border="0" width="350px" src="https://cloud.githubusercontent.com/assets/1629492/3908664/c8a67bc0-2305-11e4-88d3-e9b70f3cc59d.png"></td>
 <td valign='top'>
 RTL Support<br/>
-<img border="0" width="300px" src="https://cloud.githubusercontent.com/assets/1629492/3908665/cad9d7d4-2305-11e4-8ff2-fa8fd222dac9.png"></td>
+<img border="0" width="350px" src="https://cloud.githubusercontent.com/assets/1629492/3908665/cad9d7d4-2305-11e4-8ff2-fa8fd222dac9.png"></td>
 </tr>
 </table>
 
@@ -34,7 +34,7 @@ RTL Support<br/>
 ##GridViewScroll with jQuery (v0.9.6.8)
 Freeze column and fixed header in Table or GridView
 
-<img border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscroll_git.png">
+<img border="0" width="700px" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscroll_git.png">
 
 ###Download
 http://gridviewscroll.aspcity.idv.tw/Download.aspx
