@@ -22,10 +22,10 @@ If you have any ideas, please let us know.
 <tr>
 <td valign='top'>
 Freeze HeaderRow and FooterRow<br/>
-<img border="0" width="380px" src="https://cloud.githubusercontent.com/assets/1629492/3908664/c8a67bc0-2305-11e4-88d3-e9b70f3cc59d.png"></td>
+<img border="0" width="360px" src="https://cloud.githubusercontent.com/assets/1629492/3908664/c8a67bc0-2305-11e4-88d3-e9b70f3cc59d.png"></td>
 <td valign='top'>
 RTL Support<br/>
-<img border="0" width="380px" src="https://cloud.githubusercontent.com/assets/1629492/3908665/cad9d7d4-2305-11e4-8ff2-fa8fd222dac9.png"></td>
+<img border="0" width="360px" src="https://cloud.githubusercontent.com/assets/1629492/3908665/cad9d7d4-2305-11e4-8ff2-fa8fd222dac9.png"></td>
 </tr>
 </table>
 
