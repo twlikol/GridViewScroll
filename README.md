@@ -22,15 +22,15 @@ If you have any ideas, please let us know.
 <table cellspacing='0' cellpadding='0' border='0' style='width:100%'>
 <tr>
 <td valign='top'>
-Freeze HeaderRow and FooterRow<br/>
+Freeze header and footer row<br/>
 <img border="0" width="330px" src="https://cloud.githubusercontent.com/assets/1629492/3908664/c8a67bc0-2305-11e4-88d3-e9b70f3cc59d.png"></td>
 <td valign='top'>
-RTL Support<br/>
+RTL support<br/>
 <img border="0" width="330px" src="https://cloud.githubusercontent.com/assets/1629492/3908665/cad9d7d4-2305-11e4-8ff2-fa8fd222dac9.png"></td>
 </tr>
 <tr>
 <td valign='top'>
-Freeze Column<br/>
+Freeze column<br/>
 <img border="0" width="330px" src="https://cloud.githubusercontent.com/assets/1629492/3916684/11a6be38-237f-11e4-9541-8f4ea1cf05dc.png"></td>
 <td valign='top'></td>
 </tr>
