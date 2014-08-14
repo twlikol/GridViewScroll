@@ -4,14 +4,15 @@ We are developing a new version, we will try to complete all of the features.
 If you have any ideas, please let us know.
 
 ###Support features
-* Freeze HeaderRow and FooterRow (both only 1 row)
-* Support ASP.NET GridView pager
-* Support RTL
+* Freeze header and footer row (both only 1 row)
+* Freeze column
+* ASP.NET GridView Pager
+* RTL
 * Default scrollbar of browser
 
 ###Developing features
-* More freeze HeaderRow and FooterRow count
-* HeaderRow and FooterRow cell merge
+* Freeze more header and footer row
+* Cell merge for header and footer row
 * Freeze column
 * More public methods or events
 * Integrate custom modules
@@ -26,6 +27,12 @@ Freeze HeaderRow and FooterRow<br/>
 <td valign='top'>
 RTL Support<br/>
 <img border="0" width="330px" src="https://cloud.githubusercontent.com/assets/1629492/3908665/cad9d7d4-2305-11e4-8ff2-fa8fd222dac9.png"></td>
+</tr>
+<tr>
+<td valign='top'>
+Freeze Column<br/>
+<img border="0" width="330px" src="https://cloud.githubusercontent.com/assets/1629492/3916684/11a6be38-237f-11e4-9541-8f4ea1cf05dc.png"></td>
+<td valign='top'></td>
 </tr>
 </table>
 
