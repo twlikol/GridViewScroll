@@ -13,7 +13,7 @@ If you have any ideas, please let us know.
 ###Developing features
 * Freeze more header and footer row
 * Cell merge for header and footer row
-* Freeze column
+* Cell merge for item row
 * More public methods or events
 * Integrate custom modules
 * Performance improvement
