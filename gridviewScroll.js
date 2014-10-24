@@ -932,7 +932,9 @@
                         delta = panelitemcontent[0].scrollHeight - panelitemcontent.outerHeight();
                     }
 
-                    freezeitemcontent.scrollTop(delta);
+                    if (freezeitemcontent != null) {
+                      freezeitemcontent.scrollTop(delta);
+                    }
                 }
             }
 
