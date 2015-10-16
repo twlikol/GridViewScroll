@@ -3,8 +3,8 @@
     padding: 5px;
     font-weight: bold;
     white-space: nowrap;
-    border-right: 1px solid #AAAAAA;
-    border-bottom: 1px solid #AAAAAA;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
     background-color: #EFEFEF;
     vertical-align: bottom;
     text-align: left;
@@ -13,9 +13,9 @@
 {
     padding: 5px;
     white-space: nowrap;
-    border-right: 1px solid #AAAAAA;
-    border-bottom: 1px solid #AAAAAA;
-    background-color: #FFFFFF;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    background-color: #fff;
 }
 .GridviewScrollItem .Freeze
 {
@@ -25,32 +25,32 @@
 {
     padding: 5px;
     white-space: nowrap;
-    border-right: 1px solid #AAAAAA;
-    border-bottom: 1px solid #AAAAAA;
-    background-color: #CCCCCC;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    background-color: #ccc;
     cursor: pointer;
 }
 .GridviewScrollItemHover .Freeze
 {
-    background-color: #CCCCCC;
+    background-color: #ccc;
 }
 .GridviewScrollItemSelected TD
 {
     padding: 5px;
     white-space: nowrap;
-    border-right: 1px solid #AAAAAA;
-    border-bottom: 1px solid #AAAAAA;
-    background-color: #999999;
-    color: #FFFFFF;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    background-color: #999;
+    color: #fff;
 }
 .GridviewScrollItemSelected .Freeze
 {
-    background-color: #999999;
+    background-color: #999;
 }
 .GridviewScrollPager
 {
-    border-top: 1px solid #AAAAAA;
-    background-color: #FFFFFF;
+    border-top: 1px solid #aaa;
+    background-color: #fff;
 }
 .GridviewScrollPager TD
 {
@@ -61,7 +61,7 @@
 }
 .GridviewScrollPager A
 {
-    color: #666666;
+    color: #666;
 }
 
 .GridviewScrollPager SPAN
