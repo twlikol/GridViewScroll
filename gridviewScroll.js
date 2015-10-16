@@ -1303,8 +1303,7 @@
                 $(gridcelldiv).remove();
             }
 
-            function moveTo(rowIndex)
-            {
+            function moveTo(rowIndex) {
                 var realRowIndex = rowIndex - 1 + opt.headerrowcount;
 
                 var realRow = gridbody[0].rows[realRowIndex];
@@ -1331,7 +1330,7 @@
             var isovergrid = false;
             var releasescroll = false;
 
-            var defaultdiv = "<div></div>";
+            var defaultdiv = "<div>";
             var defaultimg = "<span>";
 
             var panelheader = null;
