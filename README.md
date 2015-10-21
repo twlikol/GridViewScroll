@@ -44,9 +44,9 @@ Freeze column and fixed header in Table or GridView
 <img border="0" width="760px" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscroll_git.png">
 
 ###Dependencies
-jQuery 1.8.2+
+* jQuery 1.8.2+
 http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js
-jQueryUI 1.9.1+
+* jQueryUI 1.9.1+
 http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js
 
 ###Download
