@@ -1565,8 +1565,6 @@
             panelheader.css({ position: "relative", overflow: "hidden", width: scrollWidth });
             panelheadercontent.css({ overflow: "hidden", width: scrollWidth - opt.railsize, zIndex: panelZIndex });
 
-            calculateColumnWidth();
-
             if (opt.freezesize != 0) {
                 var rowsCount = gridbody.children().length - 1;
                 var datarowstart = opt.headerrowcount + 1;
@@ -1577,6 +1575,8 @@
             createScrollbar();
 
             calculateScrollbar();
+            
+            calculateColumnWidth();
 
             var freezeheadercontentid = panelheadercontent.attr("id") + "Freeze";
             var freezeitemcontentid = panelitemcontent.attr("id") + "Freeze";
