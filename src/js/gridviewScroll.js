@@ -5,21 +5,22 @@
  * Copyright (c) 2012 Likol Lee
  * Released under the MIT license
 
- * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: 
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
- * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. 
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+/**globals jQuery */
 (function ($) {
 
-    jQuery.fn.extend({
+    $.fn.extend({
 
         gridviewScroll: function (options) {
 
@@ -32,10 +33,6 @@
                 bgcolor: "#F0F0F0",
                 freezesize: 0,
                 arrowsize: 0,
-                varrowtopimg: "",
-                varrowbottomimg: "",
-                harrowleftimg: "",
-                harrowrightimg: "",
                 headerrowcount: 1,
                 railsize: 15,
                 barsize: 15,
@@ -518,8 +515,7 @@
                             top: 0
                         });
 
-                    verticalarrowt.attr("id", verticalarrowtid);
-                    verticalarrowt.attr("src", opt.varrowtopimg);
+                    verticalarrowt.attr("id", verticalarrowtid).addClass("arrowvt");
 
                     panelitem.append(verticalarrowt);
 
@@ -555,8 +551,7 @@
                             zIndex: scrollbarZIndex
                         });
 
-                    verticalarrowb.attr("id", verticalarrowbid);
-                    verticalarrowb.attr("src", opt.varrowbottomimg);
+                    verticalarrowb.attr("id", verticalarrowbid).addClass("arrowvb");
 
                     panelitem.append(verticalarrowb);
 
@@ -667,8 +662,7 @@
                             top: 0
                         });
 
-                    horizontalarrowl.attr("id", horizontalarrowlid);
-                    horizontalarrowl.attr("src", opt.harrowleftimg);
+                    horizontalarrowl.attr("id", horizontalarrowlid).addClass("arrowhl");
 
                     panelitem.append(horizontalarrowl);
 
@@ -701,8 +695,7 @@
                             zIndex: scrollbarZIndex
                         });
 
-                    horizontalarrowr.attr("id", horizontalarrowrid);
-                    horizontalarrowr.attr("src", opt.harrowrightimg);
+                    horizontalarrowr.attr("id", horizontalarrowrid).addClass("arrowhr");
 
                     panelitem.append(horizontalarrowr);
 
@@ -1052,7 +1045,7 @@
 
                 for (var i = 0; i < cellcount; i++) {
                     var width = gridcellswidth[i];
-                    
+
                     gridrow[0].cells[i].childNodes[0].style.width = width + "px";
 
                     if (gridcellswidthset[i]) {
@@ -1311,8 +1304,7 @@
                 $(gridcelldiv).remove();
             }
 
-            function moveTo(rowIndex)
-            {
+            function moveTo(rowIndex) {
                 var realRowIndex = rowIndex - 1 + opt.headerrowcount;
 
                 var realRow = gridbody[0].rows[realRowIndex];
@@ -1339,8 +1331,8 @@
             var isovergrid = false;
             var releasescroll = false;
 
-            var defaultdiv = "<div></div>";
-            var defaultimg = "<img />";
+            var defaultdiv = "<div>";
+            var defaultimg = "<span>";
 
             var panelheader = null;
             var panelitem = null;
@@ -1818,9 +1810,4 @@
             return this;
         }
     });
-
-    jQuery.fn.extend({
-        gridviewScroll: jQuery.fn.gridviewScroll
-    });
-
 })(jQuery);

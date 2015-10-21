@@ -50,7 +50,7 @@ http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js
 http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js
 
 ###Download
-http://gridviewscroll.aspcity.idv.tw/Download.aspx
+https://github.com/Moykn/GridViewScroll/archive/master.zip
 
 ###Supported Browsers
 * Internet Explorer 7, 8 (IE 9 Compatibility)
