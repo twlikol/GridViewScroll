@@ -44,7 +44,7 @@ Freeze column and fixed header in Table or GridView
 <img border="0" width="760px" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscroll_git.png">
 
 ###Download
-http://gridviewscroll.aspcity.idv.tw/Download.aspx
+https://github.com/Moykn/GridViewScroll/archive/master.zip
 
 ###Supported Browsers
 * Internet Explorer 7, 8 (IE 9 Compatibility)
