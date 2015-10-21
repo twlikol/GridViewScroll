@@ -17,9 +17,10 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
+/**globals jQuery */
 (function ($) {
 
-    jQuery.fn.extend({
+    $.fn.extend({
 
         gridviewScroll: function (options) {
 
@@ -1809,9 +1810,4 @@
             return this;
         }
     });
-
-    jQuery.fn.extend({
-        gridviewScroll: jQuery.fn.gridviewScroll
-    });
-
 })(jQuery);
