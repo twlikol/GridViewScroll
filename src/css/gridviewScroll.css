@@ -1,0 +1,100 @@
+﻿.GridviewScrollHeader TH, .GridviewScrollHeader TD
+{
+    padding: 5px;
+    font-weight: bold;
+    white-space: nowrap;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    background-color: #EFEFEF;
+    vertical-align: bottom;
+    text-align: left;
+}
+.GridviewScrollItem TD
+{
+    padding: 5px;
+    white-space: nowrap;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    background-color: #fff;
+}
+.GridviewScrollItem .Freeze
+{
+    background-color: #EFEFEF;
+}
+.GridviewScrollItemHover TD
+{
+    padding: 5px;
+    white-space: nowrap;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    background-color: #ccc;
+    cursor: pointer;
+}
+.GridviewScrollItemHover .Freeze
+{
+    background-color: #ccc;
+}
+.GridviewScrollItemSelected TD
+{
+    padding: 5px;
+    white-space: nowrap;
+    border-right: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+    background-color: #999;
+    color: #fff;
+}
+.GridviewScrollItemSelected .Freeze
+{
+    background-color: #999;
+}
+.GridviewScrollPager
+{
+    border-top: 1px solid #aaa;
+    background-color: #fff;
+}
+.GridviewScrollPager TD
+{
+    padding-top: 3px;
+    font-size: 14px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.GridviewScrollPager A
+{
+    color: #666;
+}
+
+.GridviewScrollPager SPAN
+{
+    font-size: 16px;
+    font-weight: bold;
+}
+.arrowhl,
+.arrowhr,
+.arrowvb,
+.arrowvt
+{
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAABfBAMAAAB7INjTAAAAElBMVEUAAABgYGBnZ2dubm6MjIzExMSjvmXIAAAAAXRSTlMAQObYZgAAAIBJREFUOMtjYKAABAk6oPBZFUUoVMBgKEzADkwzyFJCbcAiqIom4igUQAUl6OGBoQLdDNIVDFXAAieggBEUx47IAiIg7yIJMAGTgaMQakpBC48gQUPUAGNVRA+wIPRoYzVlGAXDFGDELXrsY6QP9BSEkcYwUiFGOsVIyRhpfZACAE+gEUfCd9UMAAAAAElFTkSuQmCC');
+}
+.arrowhl,
+.arrowhr{
+  width: 30px;
+	height: 15px;
+}
+.arrowhl {
+  background-position: -1px -1px;
+}
+.arrowhr {
+	background-position: -1px -17px;
+}
+.arrowvt,
+.arrowvb{
+  width: 15px;
+	height: 30px;
+}
+.arrowvb {
+	background-position: -1px -33px;
+}
+.arrowvt {
+	background-position: -1px -64px;
+}
