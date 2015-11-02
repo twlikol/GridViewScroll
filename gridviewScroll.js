@@ -734,7 +734,8 @@
                 });
 
                 verticalbar.css({
-                    top: opt.arrowsize
+                    top: opt.arrowsize,
+                    left: "auto"
                 });
 
                 horizontalrail.css({
