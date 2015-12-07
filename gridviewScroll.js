@@ -932,9 +932,10 @@
                         delta = panelitemcontent[0].scrollHeight - panelitemcontent.outerHeight();
                     }
 
-                    if (freezeitemcontent != null) {
-                      freezeitemcontent.scrollTop(delta);
+                    if (freezeitemcontent == null) {
+                        freezeitemcontent = $("#" + freezeitemcontentid);  
                     }
+                    freezeitemcontent.scrollTop(delta);
                 }
             }
 
