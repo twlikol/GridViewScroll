@@ -47,7 +47,7 @@
 {
     background-color: #999999;
 }
-.GridviewScrollPager 
+.GridviewScrollPager
 {
     border-top: 1px solid #AAAAAA;
     background-color: #FFFFFF;
@@ -68,4 +68,33 @@
 {
     font-size: 16px;
     font-weight: bold;
+}
+.arrowhl,
+.arrowhr,
+.arrowvb,
+.arrowvt
+{
+  background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAABfBAMAAAB7INjTAAAAElBMVEUAAABgYGBnZ2dubm6MjIzExMSjvmXIAAAAAXRSTlMAQObYZgAAAIBJREFUOMtjYKAABAk6oPBZFUUoVMBgKEzADkwzyFJCbcAiqIom4igUQAUl6OGBoQLdDNIVDFXAAieggBEUx47IAiIg7yIJMAGTgaMQakpBC48gQUPUAGNVRA+wIPRoYzVlGAXDFGDELXrsY6QP9BSEkcYwUiFGOsVIyRhpfZACAE+gEUfCd9UMAAAAAElFTkSuQmCC');
+}
+.arrowhl,
+.arrowhr{
+  width: 30px;
+	height: 15px;
+}
+.arrowhl {
+  background-position: -1px -1px;
+}
+.arrowhr {
+	background-position: -1px -17px;
+}
+.arrowvt,
+.arrowvb{
+  width: 15px;
+	height: 30px;
+}
+.arrowvb {
+	background-position: -1px -33px;
+}
+.arrowvt {
+	background-position: -1px -64px;
 }
