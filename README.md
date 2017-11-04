@@ -18,7 +18,7 @@ If you have any ideas, please let us know.
 * Integrate custom modules
 * Performance improvement
 
-### GridViewScroll with jQuery (v0.9.6.8)
+## GridViewScroll with jQuery (v0.9.6.8)
 Freeze column and fixed header in Table or GridView
 
 <img border="0" width="760px" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscroll_git.png">
