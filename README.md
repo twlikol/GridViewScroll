@@ -1,46 +1,26 @@
-## GridViewScroll with jQuery (vNext)
+## GridViewScroll with jQuery (v2)
 We are developing a new version, we will try to complete all of the features.
 
 If you have any ideas, please let us know.
 
-### Support features
-* Freeze header and footer row (both only 1 row)
-* Freeze column
-* ASP.NET GridView Pager
-* RTL
+**Support features**
 * Default scrollbar of browser
+* Freeze header (only 1 row)
 
-### Developing features
-* Freeze more header and footer row
+**Developing features**
+* Freeze column (only first column)
+* RTL support
+
+**Planned features**
+* Freeze more 
 * Cell merge for header and footer row
 * Cell merge for item row
 * More public methods or events
 * Integrate custom modules
 * Performance improvement
 
-## GridViewScroll with jQuery (v0.9.6.8)
-Freeze column and fixed header in Table or GridView
+### Release history
 
-<img border="0" width="760px" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscroll_git.png">
+**v2.0.0.1 - released on 2017/11/05:**
 
-### Dependencies
-* jQuery 1.8.2+
-http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js
-* jQueryUI 1.9.1+
-http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js
-
-### Download
-http://gridviewscroll.aspcity.idv.tw/Download.aspx
-
-### Supported Browsers
-* Internet Explorer 7, 8 (IE 9 Compatibility)
-* Internet Explorer 9 (9.0.8112)
-* Internet Explorer 10
-* Google Chrome(23.0.1271.64 m)
-* Mozilla Firefox (16.0.2)
-* Apple Safari (5.1.7)
-
-### Project site, Demo, Documentation
-* Home - http://gridviewscroll.aspcity.idv.tw/
-* Demo - http://gridviewscroll.aspcity.idv.tw/Demo.aspx
-* Documentation - http://gridviewscroll.aspcity.idv.tw/Documentation.aspx
+* initial release
