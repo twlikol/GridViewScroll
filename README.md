@@ -1,4 +1,4 @@
-## GridViewScroll with jQuery (vNext)
+## GridViewScroll (vNext)
 We are developing a new version, If you have any ideas, please let us know.
 
 Please visit in https://github.com/twlikol/GridViewScroll/tree/v2
