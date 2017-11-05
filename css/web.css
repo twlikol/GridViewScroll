@@ -9,21 +9,22 @@ BODY {
 }
 
 .GridViewScrollHeader TH, .GridViewScrollHeader TD {
-    padding: 5px;
-    font-weight: bold;
+    padding: 10px;
+    font-weight: normal;
     white-space: nowrap;
-    border-right: 1px solid #CCCCCC;
-    border-bottom: 1px solid #CCCCCC;
-    background-color: #999999;
-    color: #FFFFFF;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #FAFAFA;
+    color: #999999;
     text-align: left;
     vertical-align: bottom;
 }
 
 .GridViewScrollItem TD {
-    padding: 5px;
+    padding: 10px;
     white-space: nowrap;
-    border-right: 1px solid #CCCCCC;
-    border-bottom: 1px solid #CCCCCC;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
     background-color: #FFFFFF;
+    color: #444444;
 }
