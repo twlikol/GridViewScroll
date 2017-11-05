@@ -14,7 +14,7 @@ BODY {
     white-space: nowrap;
     border-right: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
-    background-color: #FAFAFA;
+    background-color: #F4F4F4;
     color: #999999;
     text-align: left;
     vertical-align: bottom;
@@ -26,5 +26,23 @@ BODY {
     border-right: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
     background-color: #FFFFFF;
+    color: #444444;
+}
+
+.GridViewScrollItemFreeze TD {
+    padding: 10px;
+    white-space: nowrap;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #F4F4F4;
+    color: #444444;
+}
+
+.GridViewScrollFooterFreeze TD {
+    padding: 10px;
+    white-space: nowrap;
+    border-right: 1px solid #e6e6e6;
+    border-bottom: 1px solid #e6e6e6;
+    background-color: #F4F4F4;
     color: #444444;
 }

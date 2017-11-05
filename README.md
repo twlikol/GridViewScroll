@@ -7,6 +7,7 @@ If you have any ideas, please let us know.
 * Default scrollbar of browser
 * Freeze header (only top row)
 * Freeze colunn (only first column)
+* Freeze footer (only last row)
 * RTL support
 
 **Developing features**
