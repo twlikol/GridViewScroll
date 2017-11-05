@@ -54,7 +54,7 @@ define(["require", "exports"], function (require, exports) {
             this.ScrollbarWidth = this.getScrollbarWidth();
             this.prepareHeader();
             this.calculateHeader();
-            if (this.FreezeColumn && (this.IsVerticalScrollbarEnabled || this.IsHorizontalScrollbarEnabled)) {
+            if (this.FreezeColumn && this.IsHorizontalScrollbarEnabled) {
                 this.appendFreezeHeader();
                 this.appendFreezeContent();
             }
@@ -82,7 +82,8 @@ define(["require", "exports"], function (require, exports) {
             var self = this;
             this.ContentFixed.onscroll = function (event) {
                 self.HeaderFixed.scrollLeft = self.ContentFixed.scrollLeft;
-                self.ContentFreeze.scrollTop = self.ContentFixed.scrollTop;
+                if (self.ContentFreeze != null)
+                    self.ContentFreeze.scrollTop = self.ContentFixed.scrollTop;
             };
         };
         GridViewScroll.prototype.prepareHeader = function () {

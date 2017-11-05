@@ -103,7 +103,7 @@ export class GridViewScroll {
         this.prepareHeader();
         this.calculateHeader();
 
-        if (this.FreezeColumn && (this.IsVerticalScrollbarEnabled || this.IsHorizontalScrollbarEnabled)) {
+        if (this.FreezeColumn && this.IsHorizontalScrollbarEnabled) {
             this.appendFreezeHeader();
             this.appendFreezeContent();
         }
@@ -140,7 +140,8 @@ export class GridViewScroll {
         this.ContentFixed.onscroll = function (event: UIEvent) {
             self.HeaderFixed.scrollLeft = self.ContentFixed.scrollLeft;
 
-            self.ContentFreeze.scrollTop = self.ContentFixed.scrollTop;
+            if(self.ContentFreeze != null)
+                self.ContentFreeze.scrollTop = self.ContentFixed.scrollTop;
         }
     }
 
