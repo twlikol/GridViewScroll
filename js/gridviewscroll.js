@@ -47,6 +47,7 @@ define(["require", "exports"], function (require, exports) {
             this.HeaderContainer = this.Header.appendChild(this.HeaderContainer);
             this.ScrollbarWidth = this.getScrollbarWidth();
             this.prepareHeader();
+            this.calculateHeader();
             if ((this.Header.offsetHeight + this.Content.offsetHeight) < this.Height) {
                 this.IsVerticalScrollbarEnabled = false;
             }
@@ -55,7 +56,12 @@ define(["require", "exports"], function (require, exports) {
                 this.HeaderContainer.style.width = String(this.Width - this.ScrollbarWidth) + "px";
                 if (this.IsHorizontalScrollbarEnabled) {
                     this.Content.style.width = this.HeaderContainer.style.width;
-                    this.Content.style.paddingRight = String(this.ScrollbarWidth) + "px";
+                    if (this.isRTL()) {
+                        this.Content.style.paddingLeft = String(this.ScrollbarWidth) + "px";
+                    }
+                    else {
+                        this.Content.style.paddingRight = String(this.ScrollbarWidth) + "px";
+                    }
                 }
                 this.Content.style.height = String(this.Height - this.Header.offsetHeight) + "px";
             }
@@ -67,10 +73,11 @@ define(["require", "exports"], function (require, exports) {
             this.Content.onscroll = function (event) {
                 self.HeaderContainer.scrollLeft = self.Content.scrollLeft;
             };
+            this.isRTL();
         };
         GridViewScroll.prototype.prepareHeader = function () {
             this.CGrid = this.Grid.cloneNode(false);
-            this.CGrid.id = this.GridID + "_Copy";
+            this.CGrid.id = this.GridID + "_Fixed";
             this.CGrid = this.HeaderContainer.appendChild(this.CGrid);
             this.CGridHeaderRow = this.GridHeaderRow.cloneNode(true);
             this.CGridHeaderRow = this.CGrid.appendChild(this.CGridHeaderRow);
@@ -78,16 +85,28 @@ define(["require", "exports"], function (require, exports) {
                 var gridItemCell = this.GridItemRow.cells.item(i);
                 var helperElement = (document.createElement('div'));
                 helperElement.className = "gridViewScrollHelper";
-                helperElement.style.height = "1px";
-                helperElement = gridItemCell.insertBefore(helperElement, helperElement.firstChild);
-                var helperWidth = parseInt(String(helperElement.offsetWidth));
-                console.log(helperWidth);
-                helperElement.style.width = helperWidth + "px";
+                while (gridItemCell.hasChildNodes()) {
+                    helperElement.appendChild(gridItemCell.firstChild);
+                }
+                helperElement = gridItemCell.appendChild(helperElement);
                 var cgridHeaderCell = this.CGridHeaderRow.cells.item(i);
                 helperElement = (document.createElement('div'));
                 helperElement.className = "gridViewScrollHelper";
-                helperElement.style.height = "1px";
-                helperElement = cgridHeaderCell.insertBefore(helperElement, helperElement.firstChild);
+                while (cgridHeaderCell.hasChildNodes()) {
+                    helperElement.appendChild(cgridHeaderCell.firstChild);
+                }
+                helperElement = cgridHeaderCell.appendChild(helperElement);
+            }
+        };
+        ;
+        GridViewScroll.prototype.calculateHeader = function () {
+            for (var i = 0; i < this.GridItemRow.cells.length; i++) {
+                var gridItemCell = this.GridItemRow.cells.item(i);
+                var helperElement = gridItemCell.firstChild;
+                var helperWidth = parseInt(String(helperElement.offsetWidth));
+                helperElement.style.width = helperWidth + "px";
+                var cgridHeaderCell = this.CGridHeaderRow.cells.item(i);
+                helperElement = cgridHeaderCell.firstChild;
                 helperElement.style.width = helperWidth + "px";
             }
             this.GridHeaderRow.style.display = "none";
@@ -114,6 +133,16 @@ define(["require", "exports"], function (require, exports) {
                 outerElementWidth = outerElement.clientWidth;
             document.body.removeChild(outerElement);
             return (innerElementWidth - outerElementWidth);
+        };
+        GridViewScroll.prototype.isRTL = function () {
+            var direction = "";
+            if (window.getComputedStyle) {
+                direction = window.getComputedStyle(this.Grid, null).getPropertyValue('direction');
+            }
+            else {
+                direction = this.Grid.currentStyle.direction;
+            }
+            return (direction === "rtl");
         };
         return GridViewScroll;
     }());

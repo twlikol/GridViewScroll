@@ -81,6 +81,7 @@ export class GridViewScroll {
         this.ScrollbarWidth = this.getScrollbarWidth();
 
         this.prepareHeader();
+        this.calculateHeader();
 
         if ((this.Header.offsetHeight + this.Content.offsetHeight) < this.Height) {
             this.IsVerticalScrollbarEnabled = false;
@@ -93,7 +94,13 @@ export class GridViewScroll {
 
             if (this.IsHorizontalScrollbarEnabled) {
                 this.Content.style.width = this.HeaderContainer.style.width;
-                this.Content.style.paddingRight = String(this.ScrollbarWidth) + "px";
+
+                if (this.isRTL()) {
+                    this.Content.style.paddingLeft = String(this.ScrollbarWidth) + "px";
+                }
+                else {
+                    this.Content.style.paddingRight = String(this.ScrollbarWidth) + "px";
+                }
             }                
 
             this.Content.style.height = String(this.Height - this.Header.offsetHeight) + "px";
@@ -108,11 +115,13 @@ export class GridViewScroll {
         this.Content.onscroll = function (event: UIEvent) {
             self.HeaderContainer.scrollLeft = self.Content.scrollLeft;
         }
+
+        this.isRTL();
     }
 
     private prepareHeader() : void {
         this.CGrid = <HTMLTableElement>this.Grid.cloneNode(false);
-        this.CGrid.id = this.GridID + "_Copy";
+        this.CGrid.id = this.GridID + "_Fixed";
 
         this.CGrid = this.HeaderContainer.appendChild(this.CGrid);
 
@@ -125,21 +134,39 @@ export class GridViewScroll {
 
             let helperElement = <HTMLDivElement>(document.createElement('div'));
             helperElement.className = "gridViewScrollHelper";
-            helperElement.style.height = "1px";
-            helperElement = gridItemCell.insertBefore(helperElement, helperElement.firstChild);
 
-            let helperWidth = parseInt(String(helperElement.offsetWidth));
+            while (gridItemCell.hasChildNodes()) {
+                helperElement.appendChild(gridItemCell.firstChild);
+            }
 
-            console.log(helperWidth);
-
-            helperElement.style.width = helperWidth + "px";
+            helperElement = gridItemCell.appendChild(helperElement);
 
             let cgridHeaderCell = this.CGridHeaderRow.cells.item(i);
 
             helperElement = <HTMLDivElement>(document.createElement('div'));
             helperElement.className = "gridViewScrollHelper";
-            helperElement.style.height = "1px";
-            helperElement = cgridHeaderCell.insertBefore(helperElement, helperElement.firstChild);
+
+            while (cgridHeaderCell.hasChildNodes()) {
+                helperElement.appendChild(cgridHeaderCell.firstChild);
+            }
+
+            helperElement = cgridHeaderCell.appendChild(helperElement);
+        }
+    };
+
+    private calculateHeader(): void {
+        for (var i = 0; i < this.GridItemRow.cells.length; i++) {
+            let gridItemCell = this.GridItemRow.cells.item(i);
+
+            let helperElement = <HTMLDivElement>gridItemCell.firstChild;
+
+            let helperWidth = parseInt(String(helperElement.offsetWidth));
+
+            helperElement.style.width = helperWidth + "px";
+
+            let cgridHeaderCell = this.CGridHeaderRow.cells.item(i);
+
+            helperElement = <HTMLDivElement>cgridHeaderCell.firstChild;
 
             helperElement.style.width = helperWidth + "px";
         }
@@ -147,7 +174,7 @@ export class GridViewScroll {
         this.GridHeaderRow.style.display = "none";
     };
 
-    public getScrollbarWidth(): number {
+    private getScrollbarWidth(): number {
         var innerElement = document.createElement('p');
         innerElement.style.width = "100%";
         innerElement.style.height = "200px";
@@ -175,5 +202,15 @@ export class GridViewScroll {
         document.body.removeChild(outerElement);
 
         return (innerElementWidth - outerElementWidth);
+    }
+
+    private isRTL(): boolean {
+        let direction = "";
+        if (window.getComputedStyle) {
+            direction = window.getComputedStyle(this.Grid, null).getPropertyValue('direction');
+        } else {
+            direction = (<any>this.Grid).currentStyle.direction;
+        }
+        return (direction === "rtl");
     }
 }
