@@ -1,4 +1,4 @@
-## GridViewScroll with jQuery (v2)
+## GridViewScroll (v2)
 We are developing a new version, we will try to complete all of the features.
 
 If you have any ideas, please let us know.
