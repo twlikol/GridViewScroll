@@ -5,7 +5,7 @@ If you have any ideas, please let us know.
 
 <img border="0" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscrollv2_git.png">
 
-**Support features**
+**Features**
 * Default scrollbar of browser
 * Freeze header (only top row)
 * Freeze colunn (only first column)
