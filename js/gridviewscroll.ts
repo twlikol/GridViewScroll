@@ -311,13 +311,8 @@ export class GridViewScroll {
 
             freezeCellHeights.push(helperHeight);
 
-            //helperElement.style.height = String(helperHeight) + "px";
-
             let cgridItemRow = <HTMLTableRowElement>gridItemRow.cloneNode(false);
             let cgridItemCell = gridItemCell.cloneNode(true);
-
-            if (this.FreezeColumnCssClass != null)
-                cgridItemRow.className = this.FreezeColumnCssClass;
 
             cgridItemRow.appendChild(cgridItemCell);
 
@@ -330,6 +325,9 @@ export class GridViewScroll {
 
             let cgridItemRow = this.ContentFreezeGrid.rows.item(i);
             let cgridItemCell = cgridItemRow.cells.item(0);
+
+            if (this.FreezeColumnCssClass != null)
+                cgridItemRow.className = this.FreezeColumnCssClass;
 
             let helperElement = <HTMLDivElement>gridItemCell.firstChild;
 

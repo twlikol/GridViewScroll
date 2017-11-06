@@ -184,11 +184,8 @@ define(["require", "exports"], function (require, exports) {
                 var paddingBottom = this.getPaddingBottom(gridItemCell);
                 var helperHeight = parseInt(String(gridItemCell.offsetHeight - paddingTop - paddingBottom));
                 freezeCellHeights.push(helperHeight);
-                //helperElement.style.height = String(helperHeight) + "px";
                 var cgridItemRow = gridItemRow.cloneNode(false);
                 var cgridItemCell = gridItemCell.cloneNode(true);
-                if (this.FreezeColumnCssClass != null)
-                    cgridItemRow.className = this.FreezeColumnCssClass;
                 cgridItemRow.appendChild(cgridItemCell);
                 this.ContentFreezeGrid.appendChild(cgridItemRow);
             }
@@ -197,6 +194,8 @@ define(["require", "exports"], function (require, exports) {
                 var gridItemCell = gridItemRow.cells.item(0);
                 var cgridItemRow = this.ContentFreezeGrid.rows.item(i);
                 var cgridItemCell = cgridItemRow.cells.item(0);
+                if (this.FreezeColumnCssClass != null)
+                    cgridItemRow.className = this.FreezeColumnCssClass;
                 var helperElement = gridItemCell.firstChild;
                 helperElement.style.height = String(freezeCellHeights[i]) + "px";
                 helperElement = cgridItemCell.firstChild;
