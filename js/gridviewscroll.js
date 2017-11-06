@@ -19,23 +19,23 @@ define(["require", "exports"], function (require, exports) {
             this.FreezeFooter = options.freezeFooter;
             this.FreezeColumnCssClass = options.freezeColumnCssClass;
             this.FreezeFooterCssClass = options.freezeFooterCssClass;
-            this.IsVerticalScrollbarEnabled = false;
-            this.IsHorizontalScrollbarEnabled = false;
         };
         GridViewScroll.prototype.enhance = function () {
             this.FreezeCellWidths = [];
             this.FreezeCellHeights = [];
+            this.IsVerticalScrollbarEnabled = false;
+            this.IsHorizontalScrollbarEnabled = false;
             this.ContentGrid = document.getElementById(this.GridID);
             //if (this.ContentGrid.rows.length < 2) return;
             this.ContentGridHeaderRow = this.ContentGrid.rows.item(0);
             this.ContentGridItemRow = this.ContentGrid.rows.item(1);
             var footerIndex = this.ContentGrid.rows.length - 1;
             this.ContentGridFooterRow = this.ContentGrid.rows.item(footerIndex);
-            var parentElement = this.ContentGrid.parentNode;
+            this.Parent = this.ContentGrid.parentNode;
             this.Content = (document.createElement('div'));
             this.Content.id = this.GridID + "_Content";
             this.Content.style.position = "relative";
-            this.Content = parentElement.insertBefore(this.Content, this.ContentGrid);
+            this.Content = this.Parent.insertBefore(this.Content, this.ContentGrid);
             this.ContentFixed = (document.createElement('div'));
             this.ContentFixed.id = this.GridID + "_Content_Fixed";
             this.ContentFixed.style.overflow = "auto";
@@ -55,7 +55,7 @@ define(["require", "exports"], function (require, exports) {
             this.HeaderFixed = (document.createElement('div'));
             this.HeaderFixed.id = this.GridID + "_Header_Fixed";
             this.HeaderFixed.style.overflow = "hidden";
-            this.Header = parentElement.insertBefore(this.Header, this.Content);
+            this.Header = this.Parent.insertBefore(this.Header, this.Content);
             this.HeaderFixed = this.Header.appendChild(this.HeaderFixed);
             this.ScrollbarWidth = this.getScrollbarWidth();
             this.prepareHeader();
@@ -306,6 +306,23 @@ define(["require", "exports"], function (require, exports) {
                 value = element.currentStyle.paddingBottom;
             }
             return parseInt(value);
+        };
+        GridViewScroll.prototype.undo = function () {
+            this.undoHelperElement();
+            this.ContentGridHeaderRow.style.display = "";
+            this.Parent.insertBefore(this.ContentGrid, this.Header);
+            this.Parent.removeChild(this.Header);
+            this.Parent.removeChild(this.Content);
+        };
+        GridViewScroll.prototype.undoHelperElement = function () {
+            for (var i = 0; i < this.ContentGridItemRow.cells.length; i++) {
+                var gridItemCell = this.ContentGridItemRow.cells.item(i);
+                var helperElement = gridItemCell.firstChild;
+                while (helperElement.hasChildNodes()) {
+                    gridItemCell.appendChild(helperElement.firstChild);
+                }
+                gridItemCell.removeChild(helperElement);
+            }
         };
         return GridViewScroll;
     }());

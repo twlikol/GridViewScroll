@@ -15,6 +15,8 @@ export class GridViewScroll {
     private Width: number;
     private Height: number;
 
+    private Parent: HTMLElement;
+
     private ContentGrid: HTMLTableElement;
     private ContentGridHeaderRow: HTMLTableRowElement;
     private ContentGridItemRow: HTMLTableRowElement;
@@ -72,15 +74,15 @@ export class GridViewScroll {
 
         this.FreezeColumnCssClass = options.freezeColumnCssClass;
         this.FreezeFooterCssClass = options.freezeFooterCssClass;
-
-        this.IsVerticalScrollbarEnabled = false;
-        this.IsHorizontalScrollbarEnabled = false;
     }
 
     enhance(): void {
 
         this.FreezeCellWidths = [];
         this.FreezeCellHeights = [];
+
+        this.IsVerticalScrollbarEnabled = false;
+        this.IsHorizontalScrollbarEnabled = false;
 
         this.ContentGrid = <HTMLTableElement>document.getElementById(this.GridID);
 
@@ -93,13 +95,13 @@ export class GridViewScroll {
 
         this.ContentGridFooterRow = this.ContentGrid.rows.item(footerIndex);
 
-        var parentElement = this.ContentGrid.parentNode;
+        this.Parent = <HTMLElement>this.ContentGrid.parentNode;
 
         this.Content = <HTMLDivElement>(document.createElement('div'));
         this.Content.id = this.GridID + "_Content";
         this.Content.style.position = "relative";
 
-        this.Content = parentElement.insertBefore(this.Content, this.ContentGrid);
+        this.Content = this.Parent.insertBefore(this.Content, this.ContentGrid);
 
         this.ContentFixed = <HTMLDivElement>(document.createElement('div'));
         this.ContentFixed.id = this.GridID + "_Content_Fixed";
@@ -127,7 +129,7 @@ export class GridViewScroll {
         this.HeaderFixed.id = this.GridID + "_Header_Fixed";
         this.HeaderFixed.style.overflow = "hidden";
 
-        this.Header = parentElement.insertBefore(this.Header, this.Content);
+        this.Header = this.Parent.insertBefore(this.Header, this.Content);
         this.HeaderFixed = this.Header.appendChild(this.HeaderFixed);
 
         this.ScrollbarWidth = this.getScrollbarWidth();
@@ -480,5 +482,30 @@ export class GridViewScroll {
             value = (<any>element).currentStyle.paddingBottom;
         }
         return parseInt(value);
+    }
+
+    undo(): void {
+        this.undoHelperElement();
+
+        this.ContentGridHeaderRow.style.display = "";
+
+        this.Parent.insertBefore(this.ContentGrid, this.Header);
+
+        this.Parent.removeChild(this.Header);
+        this.Parent.removeChild(this.Content);
+    }
+
+    private undoHelperElement(): void {
+        for (var i = 0; i < this.ContentGridItemRow.cells.length; i++) {
+            let gridItemCell = this.ContentGridItemRow.cells.item(i);
+
+            let helperElement = <HTMLDivElement>gridItemCell.firstChild;
+
+            while (helperElement.hasChildNodes()) {
+                gridItemCell.appendChild(helperElement.firstChild);
+            }
+
+            gridItemCell.removeChild(helperElement);
+        }
     }
 }
