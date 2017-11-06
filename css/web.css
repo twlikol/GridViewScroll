@@ -42,6 +42,7 @@ BODY {
     padding: 10px;
     white-space: nowrap;
     border-right: 1px solid #e6e6e6;
+    border-top: 1px solid #e6e6e6;
     border-bottom: 1px solid #e6e6e6;
     background-color: #F4F4F4;
     color: #444444;

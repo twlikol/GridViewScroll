@@ -217,7 +217,7 @@ export class GridViewScroll {
 
             helperElement = cgridHeaderCell.appendChild(helperElement);
         }
-    };
+    }
 
     private calculateHeader(): void {
         for (var i = 0; i < this.ContentGridItemRow.cells.length; i++) {
@@ -239,7 +239,7 @@ export class GridViewScroll {
         }
 
         this.ContentGridHeaderRow.style.display = "none";
-    };
+    }
 
     private appendFreezeHeader() : void {
         this.HeaderFreeze = <HTMLDivElement>(document.createElement('div'));
@@ -249,8 +249,6 @@ export class GridViewScroll {
         this.HeaderFreeze.style.top = "0px";
         this.HeaderFreeze.style.left = "0px";
         this.HeaderFreeze.style.width = "";
-
-        this.HeaderFreeze = this.Header.appendChild(this.HeaderFreeze);
 
         this.HeaderFreezeGrid = <HTMLTableElement>this.HeaderGrid.cloneNode(false);
         this.HeaderFreezeGrid.id = this.GridID + "_Header_Freeze_Grid";
@@ -264,6 +262,8 @@ export class GridViewScroll {
         let freezeColumn = this.HeaderGridHeaderRow.cells.item(0).cloneNode(true);
 
         this.HeaderFreezeGridHeaderRow.appendChild(freezeColumn);
+
+        this.HeaderFreeze = this.Header.appendChild(this.HeaderFreeze);
     }
 
     private appendFreezeContent(): void {
@@ -275,14 +275,15 @@ export class GridViewScroll {
         this.ContentFreeze.style.left = "0px";
         this.ContentFreeze.style.width = "";
 
-        this.ContentFreeze = this.Content.appendChild(this.ContentFreeze);
-
         this.ContentFreezeGrid = <HTMLTableElement>this.HeaderGrid.cloneNode(false);
         this.ContentFreezeGrid.id = this.GridID + "_Content_Freeze_Grid";
 
         this.ContentFreezeGrid = this.ContentFreeze.appendChild(this.ContentFreezeGrid);
 
         let freezeCellHeights = [];
+
+        let paddingTop = this.getPaddingTop(this.ContentGridItemRow.cells.item(0));
+        let paddingBottom = this.getPaddingBottom(this.ContentGridItemRow.cells.item(0));
 
         for (var i = 0; i < this.ContentGrid.rows.length; i++) {
             let gridItemRow = this.ContentGrid.rows.item(i);
@@ -304,15 +305,15 @@ export class GridViewScroll {
                 helperElement = gridItemCell.appendChild(helperElement);
             }
 
-            let paddingTop = this.getPaddingTop(gridItemCell);
-            let paddingBottom = this.getPaddingBottom(gridItemCell);
-
             let helperHeight = parseInt(String(gridItemCell.offsetHeight - paddingTop - paddingBottom));
 
             freezeCellHeights.push(helperHeight);
 
             let cgridItemRow = <HTMLTableRowElement>gridItemRow.cloneNode(false);
             let cgridItemCell = gridItemCell.cloneNode(true);
+
+            if (this.FreezeColumnCssClass != null)
+                cgridItemRow.className = this.FreezeColumnCssClass;
 
             cgridItemRow.appendChild(cgridItemCell);
 
@@ -326,9 +327,6 @@ export class GridViewScroll {
             let cgridItemRow = this.ContentFreezeGrid.rows.item(i);
             let cgridItemCell = cgridItemRow.cells.item(0);
 
-            if (this.FreezeColumnCssClass != null)
-                cgridItemRow.className = this.FreezeColumnCssClass;
-
             let helperElement = <HTMLDivElement>gridItemCell.firstChild;
 
             helperElement.style.height = String(freezeCellHeights[i]) + "px";
@@ -339,6 +337,8 @@ export class GridViewScroll {
         }
 
         this.ContentFreeze.style.height = String(this.Height - this.Header.offsetHeight - this.ScrollbarWidth) + "px";
+
+        this.ContentFreeze = this.Content.appendChild(this.ContentFreeze);
     }
 
     private appendFreezeFooter(): void {
@@ -349,8 +349,6 @@ export class GridViewScroll {
         this.FooterFreeze.style.left = "0px";
 
         this.FooterFreeze.style.width = String(this.ContentFixed.offsetWidth - this.ScrollbarWidth) + "px";
-
-        this.FooterFreeze = this.Content.appendChild(this.FooterFreeze);
 
         this.FooterFreezeGrid = <HTMLTableElement>this.HeaderGrid.cloneNode(false);
         this.FooterFreezeGrid.id = this.GridID + "_Footer_Freeze_Grid";
@@ -378,6 +376,8 @@ export class GridViewScroll {
 
         this.FooterFreezeGridHeaderRow = <HTMLTableRowElement>this.FooterFreezeGrid.appendChild(this.FooterFreezeGridHeaderRow);
 
+        this.FooterFreeze = this.Content.appendChild(this.FooterFreeze);
+
         let footerFreezeTop = this.ContentFixed.offsetHeight - this.FooterFreeze.offsetHeight;
 
         if (this.IsHorizontalScrollbarEnabled) {
@@ -394,9 +394,7 @@ export class GridViewScroll {
         this.FooterFreezeColumn.style.overflow = "hidden";
         this.FooterFreezeColumn.style.left = "0px";
         this.FooterFreezeColumn.style.width = "";
-
-        this.FooterFreezeColumn = this.Content.appendChild(this.FooterFreezeColumn);
-
+        
         this.FooterFreezeColumnGrid = <HTMLTableElement>this.HeaderGrid.cloneNode(false);
         this.FooterFreezeColumnGrid.id = this.GridID + "_Footer_FreezeColumn_Grid";
 
@@ -420,6 +418,8 @@ export class GridViewScroll {
         }
 
         this.FooterFreezeColumn.style.top = String(footerFreezeTop) + "px";
+
+        this.FooterFreezeColumn = this.Content.appendChild(this.FooterFreezeColumn);
     }
 
     private getScrollbarWidth(): number {
