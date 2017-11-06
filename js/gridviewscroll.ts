@@ -277,6 +277,13 @@ export class GridViewScroll {
 
         this.ContentFreeze = this.Content.appendChild(this.ContentFreeze);
 
+        this.ContentFreezeGrid = <HTMLTableElement>this.HeaderGrid.cloneNode(false);
+        this.ContentFreezeGrid.id = this.GridID + "_Content_Freeze_Grid";
+
+        this.ContentFreezeGrid = this.ContentFreeze.appendChild(this.ContentFreezeGrid);
+
+        let freezeCellHeights = [];
+
         for (var i = 0; i < this.ContentGrid.rows.length; i++) {
             let gridItemRow = this.ContentGrid.rows.item(i);
             let gridItemCell = gridItemRow.cells.item(0);
@@ -302,17 +309,35 @@ export class GridViewScroll {
 
             let helperHeight = parseInt(String(gridItemCell.offsetHeight - paddingTop - paddingBottom));
 
-            helperElement.style.height = String(helperHeight) + "px";
+            freezeCellHeights.push(helperHeight);
+
+            //helperElement.style.height = String(helperHeight) + "px";
 
             let cgridItemRow = <HTMLTableRowElement>gridItemRow.cloneNode(false);
-            let cgridItemCell = gridItemRow.cells.item(0).cloneNode(true);
-
-            cgridItemRow.appendChild(cgridItemCell);
+            let cgridItemCell = gridItemCell.cloneNode(true);
 
             if (this.FreezeColumnCssClass != null)
                 cgridItemRow.className = this.FreezeColumnCssClass;
 
-            this.ContentFreeze.appendChild(cgridItemRow);
+            cgridItemRow.appendChild(cgridItemCell);
+
+            this.ContentFreezeGrid.appendChild(cgridItemRow);
+        }
+
+        for (var i = 0; i < this.ContentGrid.rows.length; i++) {
+            let gridItemRow = this.ContentGrid.rows.item(i);
+            let gridItemCell = gridItemRow.cells.item(0);
+
+            let cgridItemRow = this.ContentFreezeGrid.rows.item(i);
+            let cgridItemCell = cgridItemRow.cells.item(0);
+
+            let helperElement = <HTMLDivElement>gridItemCell.firstChild;
+
+            helperElement.style.height = String(freezeCellHeights[i]) + "px";
+
+            helperElement = <HTMLDivElement>cgridItemCell.firstChild;
+
+            helperElement.style.height = String(freezeCellHeights[i]) + "px";
         }
 
         this.ContentFreeze.style.height = String(this.Height - this.Header.offsetHeight - this.ScrollbarWidth) + "px";

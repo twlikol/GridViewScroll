@@ -161,6 +161,10 @@ define(["require", "exports"], function (require, exports) {
             this.ContentFreeze.style.left = "0px";
             this.ContentFreeze.style.width = "";
             this.ContentFreeze = this.Content.appendChild(this.ContentFreeze);
+            this.ContentFreezeGrid = this.HeaderGrid.cloneNode(false);
+            this.ContentFreezeGrid.id = this.GridID + "_Content_Freeze_Grid";
+            this.ContentFreezeGrid = this.ContentFreeze.appendChild(this.ContentFreezeGrid);
+            var freezeCellHeights = [];
             for (var i = 0; i < this.ContentGrid.rows.length; i++) {
                 var gridItemRow = this.ContentGrid.rows.item(i);
                 var gridItemCell = gridItemRow.cells.item(0);
@@ -179,13 +183,24 @@ define(["require", "exports"], function (require, exports) {
                 var paddingTop = this.getPaddingTop(gridItemCell);
                 var paddingBottom = this.getPaddingBottom(gridItemCell);
                 var helperHeight = parseInt(String(gridItemCell.offsetHeight - paddingTop - paddingBottom));
-                helperElement.style.height = String(helperHeight) + "px";
+                freezeCellHeights.push(helperHeight);
+                //helperElement.style.height = String(helperHeight) + "px";
                 var cgridItemRow = gridItemRow.cloneNode(false);
-                var cgridItemCell = gridItemRow.cells.item(0).cloneNode(true);
-                cgridItemRow.appendChild(cgridItemCell);
+                var cgridItemCell = gridItemCell.cloneNode(true);
                 if (this.FreezeColumnCssClass != null)
                     cgridItemRow.className = this.FreezeColumnCssClass;
-                this.ContentFreeze.appendChild(cgridItemRow);
+                cgridItemRow.appendChild(cgridItemCell);
+                this.ContentFreezeGrid.appendChild(cgridItemRow);
+            }
+            for (var i = 0; i < this.ContentGrid.rows.length; i++) {
+                var gridItemRow = this.ContentGrid.rows.item(i);
+                var gridItemCell = gridItemRow.cells.item(0);
+                var cgridItemRow = this.ContentFreezeGrid.rows.item(i);
+                var cgridItemCell = cgridItemRow.cells.item(0);
+                var helperElement = gridItemCell.firstChild;
+                helperElement.style.height = String(freezeCellHeights[i]) + "px";
+                helperElement = cgridItemCell.firstChild;
+                helperElement.style.height = String(freezeCellHeights[i]) + "px";
             }
             this.ContentFreeze.style.height = String(this.Height - this.Header.offsetHeight - this.ScrollbarWidth) + "px";
         };
