@@ -1,13 +1,13 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var GridViewScrollOptions = /** @class */ (function () {
+    var GridViewScrollOptions = (function () {
         function GridViewScrollOptions() {
         }
         return GridViewScrollOptions;
     }());
     exports.GridViewScrollOptions = GridViewScrollOptions;
-    var GridViewScroll = /** @class */ (function () {
+    var GridViewScroll = (function () {
         function GridViewScroll(options) {
             this.initializeOptions(options);
         }
@@ -24,6 +24,7 @@ define(["require", "exports"], function (require, exports) {
         };
         GridViewScroll.prototype.enhance = function () {
             this.FreezeCellWidths = [];
+            this.FreezeCellHeights = [];
             this.ContentGrid = document.getElementById(this.GridID);
             //if (this.ContentGrid.rows.length < 2) return;
             this.ContentGridHeaderRow = this.ContentGrid.rows.item(0);
@@ -162,6 +163,23 @@ define(["require", "exports"], function (require, exports) {
             this.ContentFreeze = this.Content.appendChild(this.ContentFreeze);
             for (var i = 0; i < this.ContentGrid.rows.length; i++) {
                 var gridItemRow = this.ContentGrid.rows.item(i);
+                var gridItemCell = gridItemRow.cells.item(0);
+                var helperElement = void 0;
+                if (gridItemCell.firstChild.className == "gridViewScrollHelper") {
+                    helperElement = gridItemCell.firstChild;
+                }
+                else {
+                    helperElement = (document.createElement('div'));
+                    helperElement.className = "gridViewScrollHelper";
+                    while (gridItemCell.hasChildNodes()) {
+                        helperElement.appendChild(gridItemCell.firstChild);
+                    }
+                    helperElement = gridItemCell.appendChild(helperElement);
+                }
+                var paddingTop = this.getPaddingTop(gridItemCell);
+                var paddingBottom = this.getPaddingBottom(gridItemCell);
+                var helperHeight = parseInt(String(gridItemCell.offsetHeight - paddingTop - paddingBottom));
+                helperElement.style.height = String(helperHeight) + "px";
                 var cgridItemRow = gridItemRow.cloneNode(false);
                 var cgridItemCell = gridItemRow.cells.item(0).cloneNode(true);
                 cgridItemRow.appendChild(cgridItemCell);
@@ -256,6 +274,26 @@ define(["require", "exports"], function (require, exports) {
                 direction = this.ContentGrid.currentStyle.direction;
             }
             return (direction === "rtl");
+        };
+        GridViewScroll.prototype.getPaddingTop = function (element) {
+            var value = "";
+            if (window.getComputedStyle) {
+                value = window.getComputedStyle(element, null).getPropertyValue('padding-Top');
+            }
+            else {
+                value = element.currentStyle.paddingTop;
+            }
+            return parseInt(value);
+        };
+        GridViewScroll.prototype.getPaddingBottom = function (element) {
+            var value = "";
+            if (window.getComputedStyle) {
+                value = window.getComputedStyle(element, null).getPropertyValue('padding-Bottom');
+            }
+            else {
+                value = element.currentStyle.paddingBottom;
+            }
+            return parseInt(value);
         };
         return GridViewScroll;
     }());

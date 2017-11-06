@@ -49,6 +49,7 @@ export class GridViewScroll {
     private IsHorizontalScrollbarEnabled: boolean; // 水平卷軸
 
     private FreezeCellWidths: Array<number>;
+    private FreezeCellHeights: Array<number>;
 
     private FreezeColumn: boolean;
     private FreezeFooter: boolean;
@@ -79,6 +80,7 @@ export class GridViewScroll {
     enhance(): void {
 
         this.FreezeCellWidths = [];
+        this.FreezeCellHeights = [];
 
         this.ContentGrid = <HTMLTableElement>document.getElementById(this.GridID);
 
@@ -277,6 +279,30 @@ export class GridViewScroll {
 
         for (var i = 0; i < this.ContentGrid.rows.length; i++) {
             let gridItemRow = this.ContentGrid.rows.item(i);
+            let gridItemCell = gridItemRow.cells.item(0);
+
+            let helperElement;
+
+            if ((<HTMLElement>gridItemCell.firstChild).className == "gridViewScrollHelper") {
+                helperElement = <HTMLDivElement>gridItemCell.firstChild;
+            }
+            else {
+                helperElement = <HTMLDivElement>(document.createElement('div'));
+                helperElement.className = "gridViewScrollHelper";
+
+                while (gridItemCell.hasChildNodes()) {
+                    helperElement.appendChild(gridItemCell.firstChild);
+                }
+
+                helperElement = gridItemCell.appendChild(helperElement);
+            }
+
+            let paddingTop = this.getPaddingTop(gridItemCell);
+            let paddingBottom = this.getPaddingBottom(gridItemCell);
+
+            let helperHeight = parseInt(String(gridItemCell.offsetHeight - paddingTop - paddingBottom));
+
+            helperElement.style.height = String(helperHeight) + "px";
 
             let cgridItemRow = <HTMLTableRowElement>gridItemRow.cloneNode(false);
             let cgridItemCell = gridItemRow.cells.item(0).cloneNode(true);
@@ -411,5 +437,25 @@ export class GridViewScroll {
             direction = (<any>this.ContentGrid).currentStyle.direction;
         }
         return (direction === "rtl");
+    }
+
+    private getPaddingTop(element: HTMLElement): number {
+        let value = "";
+        if (window.getComputedStyle) {
+            value = window.getComputedStyle(element, null).getPropertyValue('padding-Top');
+        } else {
+            value = (<any>element).currentStyle.paddingTop;
+        }
+        return parseInt(value);
+    }
+
+    private getPaddingBottom(element: HTMLElement): number {
+        let value = "";
+        if (window.getComputedStyle) {
+            value = window.getComputedStyle(element, null).getPropertyValue('padding-Bottom');
+        } else {
+            value = (<any>element).currentStyle.paddingBottom;
+        }
+        return parseInt(value);
     }
 }
