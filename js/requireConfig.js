@@ -1,4 +1,0 @@
-﻿
-require.config({
-    baseUrl: 'js'
-});
