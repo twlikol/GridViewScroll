@@ -32,11 +32,11 @@ define(["require", "exports"], function (require, exports) {
             var footerIndex = this.ContentGrid.rows.length - 1;
             this.ContentGridFooterRow = this.ContentGrid.rows.item(footerIndex);
             this.Parent = this.ContentGrid.parentNode;
-            this.Content = (document.createElement('div'));
+            this.Content = document.createElement('div');
             this.Content.id = this.GridID + "_Content";
             this.Content.style.position = "relative";
             this.Content = this.Parent.insertBefore(this.Content, this.ContentGrid);
-            this.ContentFixed = (document.createElement('div'));
+            this.ContentFixed = document.createElement('div');
             this.ContentFixed.id = this.GridID + "_Content_Fixed";
             this.ContentFixed.style.overflow = "auto";
             this.ContentFixed = this.Content.appendChild(this.ContentFixed);
@@ -48,11 +48,11 @@ define(["require", "exports"], function (require, exports) {
             if (this.ContentGrid.offsetHeight > this.Height) {
                 this.IsVerticalScrollbarEnabled = true;
             }
-            this.Header = (document.createElement('div'));
+            this.Header = document.createElement('div');
             this.Header.id = this.GridID + "_Header";
             this.Header.style.backgroundColor = "#F0F0F0";
             this.Header.style.position = "relative";
-            this.HeaderFixed = (document.createElement('div'));
+            this.HeaderFixed = document.createElement('div');
             this.HeaderFixed.id = this.GridID + "_Header_Fixed";
             this.HeaderFixed.style.overflow = "hidden";
             this.Header = this.Parent.insertBefore(this.Header, this.Content);
@@ -105,14 +105,14 @@ define(["require", "exports"], function (require, exports) {
             this.HeaderGridHeaderRow = this.HeaderGrid.appendChild(this.HeaderGridHeaderRow);
             for (var i = 0; i < this.ContentGridItemRow.cells.length; i++) {
                 var gridItemCell = this.ContentGridItemRow.cells.item(i);
-                var helperElement = (document.createElement('div'));
+                var helperElement = document.createElement('div');
                 helperElement.className = "gridViewScrollHelper";
                 while (gridItemCell.hasChildNodes()) {
                     helperElement.appendChild(gridItemCell.firstChild);
                 }
                 helperElement = gridItemCell.appendChild(helperElement);
                 var cgridHeaderCell = this.HeaderGridHeaderRow.cells.item(i);
-                helperElement = (document.createElement('div'));
+                helperElement = document.createElement('div');
                 helperElement.className = "gridViewScrollHelper";
                 while (cgridHeaderCell.hasChildNodes()) {
                     helperElement.appendChild(cgridHeaderCell.firstChild);
@@ -134,7 +134,7 @@ define(["require", "exports"], function (require, exports) {
             this.ContentGridHeaderRow.style.display = "none";
         };
         GridViewScroll.prototype.appendFreezeHeader = function () {
-            this.HeaderFreeze = (document.createElement('div'));
+            this.HeaderFreeze = document.createElement('div');
             this.HeaderFreeze.id = this.GridID + "_Header_Freeze";
             this.HeaderFreeze.style.position = "absolute";
             this.HeaderFreeze.style.overflow = "hidden";
@@ -151,7 +151,7 @@ define(["require", "exports"], function (require, exports) {
             this.HeaderFreeze = this.Header.appendChild(this.HeaderFreeze);
         };
         GridViewScroll.prototype.appendFreezeContent = function () {
-            this.ContentFreeze = (document.createElement('div'));
+            this.ContentFreeze = document.createElement('div');
             this.ContentFreeze.id = this.GridID + "_Content_Freeze";
             this.ContentFreeze.style.position = "absolute";
             this.ContentFreeze.style.overflow = "hidden";
@@ -172,7 +172,7 @@ define(["require", "exports"], function (require, exports) {
                     helperElement = gridItemCell.firstChild;
                 }
                 else {
-                    helperElement = (document.createElement('div'));
+                    helperElement = document.createElement('div');
                     helperElement.className = "gridViewScrollHelper";
                     while (gridItemCell.hasChildNodes()) {
                         helperElement.appendChild(gridItemCell.firstChild);
@@ -202,7 +202,7 @@ define(["require", "exports"], function (require, exports) {
             this.ContentFreeze = this.Content.appendChild(this.ContentFreeze);
         };
         GridViewScroll.prototype.appendFreezeFooter = function () {
-            this.FooterFreeze = (document.createElement('div'));
+            this.FooterFreeze = document.createElement('div');
             this.FooterFreeze.id = this.GridID + "_Footer_Freeze";
             this.FooterFreeze.style.position = "absolute";
             this.FooterFreeze.style.overflow = "hidden";
@@ -216,7 +216,7 @@ define(["require", "exports"], function (require, exports) {
                 this.FooterFreezeGridHeaderRow.className = this.FreezeFooterCssClass;
             for (var i = 0; i < this.FooterFreezeGridHeaderRow.cells.length; i++) {
                 var cgridHeaderCell = this.FooterFreezeGridHeaderRow.cells.item(i);
-                var helperElement = (document.createElement('div'));
+                var helperElement = document.createElement('div');
                 helperElement.className = "gridViewScrollHelper";
                 helperElement.style.width = String(this.FreezeCellWidths[i]) + "px";
                 while (cgridHeaderCell.hasChildNodes()) {
@@ -233,7 +233,7 @@ define(["require", "exports"], function (require, exports) {
             this.FooterFreeze.style.top = String(footerFreezeTop) + "px";
         };
         GridViewScroll.prototype.appendFreezeFooterColumn = function () {
-            this.FooterFreezeColumn = (document.createElement('div'));
+            this.FooterFreezeColumn = document.createElement('div');
             this.FooterFreezeColumn.id = this.GridID + "_Footer_FreezeColumn";
             this.FooterFreezeColumn.style.position = "absolute";
             this.FooterFreezeColumn.style.overflow = "hidden";
@@ -275,7 +275,7 @@ define(["require", "exports"], function (require, exports) {
             if (innerElementWidth === outerElementWidth)
                 outerElementWidth = outerElement.clientWidth;
             document.body.removeChild(outerElement);
-            return (innerElementWidth - outerElementWidth);
+            return innerElementWidth - outerElementWidth;
         };
         GridViewScroll.prototype.isRTL = function () {
             var direction = "";
@@ -285,7 +285,7 @@ define(["require", "exports"], function (require, exports) {
             else {
                 direction = this.ContentGrid.currentStyle.direction;
             }
-            return (direction === "rtl");
+            return direction === "rtl";
         };
         GridViewScroll.prototype.getPaddingTop = function (element) {
             var value = "";
