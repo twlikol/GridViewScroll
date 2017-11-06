@@ -3,6 +3,8 @@ We are developing a new version, we will try to complete all of the features.
 
 If you have any ideas, please let us know.
 
+<img border="0" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscrollv2_git.png">
+
 **Support features**
 * Default scrollbar of browser
 * Freeze header (only top row)
