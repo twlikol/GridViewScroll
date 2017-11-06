@@ -51,7 +51,6 @@ export class GridViewScroll {
     private IsHorizontalScrollbarEnabled: boolean; // 水平卷軸
 
     private FreezeCellWidths: Array<number>;
-    private FreezeCellHeights: Array<number>;
 
     private FreezeColumn: boolean;
     private FreezeFooter: boolean;
@@ -79,14 +78,13 @@ export class GridViewScroll {
     enhance(): void {
 
         this.FreezeCellWidths = [];
-        this.FreezeCellHeights = [];
 
         this.IsVerticalScrollbarEnabled = false;
         this.IsHorizontalScrollbarEnabled = false;
 
         this.ContentGrid = <HTMLTableElement>document.getElementById(this.GridID);
 
-        //if (this.ContentGrid.rows.length < 2) return;
+        if (this.ContentGrid.rows.length < 2) return;
 
         this.ContentGridHeaderRow = this.ContentGrid.rows.item(0);
         this.ContentGridItemRow = this.ContentGrid.rows.item(1);

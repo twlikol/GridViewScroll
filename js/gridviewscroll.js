@@ -22,11 +22,11 @@ define(["require", "exports"], function (require, exports) {
         };
         GridViewScroll.prototype.enhance = function () {
             this.FreezeCellWidths = [];
-            this.FreezeCellHeights = [];
             this.IsVerticalScrollbarEnabled = false;
             this.IsHorizontalScrollbarEnabled = false;
             this.ContentGrid = document.getElementById(this.GridID);
-            //if (this.ContentGrid.rows.length < 2) return;
+            if (this.ContentGrid.rows.length < 2)
+                return;
             this.ContentGridHeaderRow = this.ContentGrid.rows.item(0);
             this.ContentGridItemRow = this.ContentGrid.rows.item(1);
             var footerIndex = this.ContentGrid.rows.length - 1;
