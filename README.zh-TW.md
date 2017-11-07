@@ -8,12 +8,12 @@
 * 固定標題列, 凍結欄位與凍結頁尾(目前僅支援凍結最後一列)
 
 ### 開始使用
-1. 從GitHub下載 [最新版本](https://github.com/twlikol/GridViewScroll/archive/master.zip)
-2. 將`gridviewscroll.js`加入頁面
+1. 從 GitHub 下載 [最新版本](https://github.com/twlikol/GridViewScroll/archive/master.zip)
+2. 將 `gridviewscroll.js` 加入頁面
 ```html
 <script type="text/javascript" src="js/gridviewscroll.js"></script>
   ``` 
-3. 初始化相關參數, 然後呼叫`enhance`進行套用
+3. 初始化相關參數, 呼叫 `enhance` 方法
 ```html
 <script type="text/javascript">
     window.onload = function () {
