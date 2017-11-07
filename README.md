@@ -1,7 +1,7 @@
 ## GridViewScroll (v2)
 We are developing a new version, we will try to complete all of the features.
 
-Please visit in https://github.com/twlikol/GridViewScroll/tree/v2
+If you have any ideas, please let us know.
 
 <img border="0" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscrollv2_git.png">
 
