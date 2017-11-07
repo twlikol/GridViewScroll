@@ -1,14 +1,16 @@
 define(["require", "exports"], function (require, exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
-    var GridViewScrollOptions = /** @class */ (function () {
+    var GridViewScrollOptions = (function () {
         function GridViewScrollOptions() {
         }
         return GridViewScrollOptions;
     }());
     exports.GridViewScrollOptions = GridViewScrollOptions;
-    var GridViewScroll = /** @class */ (function () {
+    var GridViewScroll = (function () {
         function GridViewScroll(options) {
+            if (options.freezeHeaderRowCount == null)
+                options.freezeHeaderRowCount = 1;
             this.initializeOptions(options);
         }
         GridViewScroll.prototype.initializeOptions = function (options) {
@@ -19,6 +21,7 @@ define(["require", "exports"], function (require, exports) {
             this.FreezeFooter = options.freezeFooter;
             this.FreezeColumnCssClass = options.freezeColumnCssClass;
             this.FreezeFooterCssClass = options.freezeFooterCssClass;
+            this.FreezeHeaderRowCount = options.freezeHeaderRowCount;
         };
         GridViewScroll.prototype.enhance = function () {
             this.FreezeCellWidths = [];
@@ -27,7 +30,7 @@ define(["require", "exports"], function (require, exports) {
             this.ContentGrid = document.getElementById(this.GridID);
             if (this.ContentGrid.rows.length < 2)
                 return;
-            this.ContentGridHeaderRow = this.ContentGrid.rows.item(0);
+            this.ContentGridHeaderRows = this.getGridHeaderRows();
             this.ContentGridItemRow = this.ContentGrid.rows.item(1);
             var footerIndex = this.ContentGrid.rows.length - 1;
             this.ContentGridFooterRow = this.ContentGrid.rows.item(footerIndex);
@@ -97,12 +100,18 @@ define(["require", "exports"], function (require, exports) {
                     self.FooterFreeze.scrollLeft = self.ContentFixed.scrollLeft;
             };
         };
+        GridViewScroll.prototype.getGridHeaderRows = function () {
+            var gridHeaderRows = new Array();
+            for (var i = 0; i < this.FreezeHeaderRowCount; i++) {
+                gridHeaderRows.push(this.ContentGrid.rows.item(i));
+            }
+            return gridHeaderRows;
+        };
         GridViewScroll.prototype.prepareHeader = function () {
             this.HeaderGrid = this.ContentGrid.cloneNode(false);
             this.HeaderGrid.id = this.GridID + "_Header_Fixed_Grid";
             this.HeaderGrid = this.HeaderFixed.appendChild(this.HeaderGrid);
-            this.HeaderGridHeaderRow = this.ContentGridHeaderRow.cloneNode(true);
-            this.HeaderGridHeaderRow = this.HeaderGrid.appendChild(this.HeaderGridHeaderRow);
+            this.prepareHeaderGridRows();
             for (var i = 0; i < this.ContentGridItemRow.cells.length; i++) {
                 var gridItemCell = this.ContentGridItemRow.cells.item(i);
                 var helperElement = document.createElement('div');
@@ -111,8 +120,22 @@ define(["require", "exports"], function (require, exports) {
                     helperElement.appendChild(gridItemCell.firstChild);
                 }
                 helperElement = gridItemCell.appendChild(helperElement);
-                var cgridHeaderCell = this.HeaderGridHeaderRow.cells.item(i);
-                helperElement = document.createElement('div');
+                this.prepareHeaderGridHelper(i);
+            }
+        };
+        GridViewScroll.prototype.prepareHeaderGridRows = function () {
+            this.HeaderGridHeaderRows = new Array();
+            for (var i = 0; i < this.FreezeHeaderRowCount; i++) {
+                var gridHeaderRow = this.ContentGridHeaderRows[i];
+                var headerGridHeaderRow = gridHeaderRow.cloneNode(true);
+                this.HeaderGridHeaderRows.push(headerGridHeaderRow);
+                this.HeaderGrid.appendChild(headerGridHeaderRow);
+            }
+        };
+        GridViewScroll.prototype.prepareHeaderGridHelper = function (cellIndex) {
+            if (this.FreezeHeaderRowCount == 1) {
+                var cgridHeaderCell = this.HeaderGridHeaderRows[0].cells.item(cellIndex);
+                var helperElement = document.createElement('div');
                 helperElement.className = "gridViewScrollHelper";
                 while (cgridHeaderCell.hasChildNodes()) {
                     helperElement.appendChild(cgridHeaderCell.firstChild);
@@ -127,11 +150,18 @@ define(["require", "exports"], function (require, exports) {
                 var helperWidth = parseInt(String(helperElement.offsetWidth));
                 this.FreezeCellWidths.push(helperWidth);
                 helperElement.style.width = helperWidth + "px";
-                var cgridHeaderCell = this.HeaderGridHeaderRow.cells.item(i);
-                helperElement = cgridHeaderCell.firstChild;
+                this.calculateHeaderGridHelper(i, helperWidth);
+            }
+            for (var i = 0; i < this.FreezeHeaderRowCount; i++) {
+                this.ContentGridHeaderRows[i].style.display = "none";
+            }
+        };
+        GridViewScroll.prototype.calculateHeaderGridHelper = function (cellIndex, helperWidth) {
+            if (this.FreezeHeaderRowCount == 1) {
+                var cgridHeaderCell = this.HeaderGridHeaderRows[0].cells.item(cellIndex);
+                var helperElement = cgridHeaderCell.firstChild;
                 helperElement.style.width = helperWidth + "px";
             }
-            this.ContentGridHeaderRow.style.display = "none";
         };
         GridViewScroll.prototype.appendFreezeHeader = function () {
             this.HeaderFreeze = document.createElement('div');
@@ -144,10 +174,14 @@ define(["require", "exports"], function (require, exports) {
             this.HeaderFreezeGrid = this.HeaderGrid.cloneNode(false);
             this.HeaderFreezeGrid.id = this.GridID + "_Header_Freeze_Grid";
             this.HeaderFreezeGrid = this.HeaderFreeze.appendChild(this.HeaderFreezeGrid);
-            this.HeaderFreezeGridHeaderRow = this.HeaderGridHeaderRow.cloneNode(false);
-            this.HeaderFreezeGridHeaderRow = this.HeaderFreezeGrid.appendChild(this.HeaderFreezeGridHeaderRow);
-            var freezeColumn = this.HeaderGridHeaderRow.cells.item(0).cloneNode(true);
-            this.HeaderFreezeGridHeaderRow.appendChild(freezeColumn);
+            this.HeaderFreezeGridHeaderRows = new Array();
+            for (var i = 0; i < this.HeaderGridHeaderRows.length; i++) {
+                var headerFreezeGridHeaderRow = this.HeaderGridHeaderRows[i].cloneNode(false);
+                this.HeaderFreezeGridHeaderRows.push(headerFreezeGridHeaderRow);
+                var freezeColumn = this.HeaderGridHeaderRows[i].cells.item(0).cloneNode(true);
+                headerFreezeGridHeaderRow.appendChild(freezeColumn);
+                this.HeaderFreezeGrid.appendChild(headerFreezeGridHeaderRow);
+            }
             this.HeaderFreeze = this.Header.appendChild(this.HeaderFreeze);
         };
         GridViewScroll.prototype.appendFreezeContent = function () {
@@ -309,7 +343,9 @@ define(["require", "exports"], function (require, exports) {
         };
         GridViewScroll.prototype.undo = function () {
             this.undoHelperElement();
-            this.ContentGridHeaderRow.style.display = "";
+            for (var i = 0; i < this.FreezeHeaderRowCount; i++) {
+                this.ContentGridHeaderRows[i].style.display = "";
+            }
             this.Parent.insertBefore(this.ContentGrid, this.Header);
             this.Parent.removeChild(this.Header);
             this.Parent.removeChild(this.Content);
