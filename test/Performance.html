@@ -7,16 +7,13 @@
     <script type="text/javascript" src="../js/gridviewscroll.js"></script>
     <script type="text/javascript">
         window.onload = function () {
-            var options = new GridViewScrollOptions();
-            options.elementID = "gvMain";
-            options.width = 450;
-            options.height = 300;
-            options.freezeColumn = true;
-            options.freezeFooter = true;
-            options.freezeColumnCssClass = "GridViewScrollItemFreeze";
-            options.freezeFooterCssClass = "GridViewScrollFooterFreeze";
-
-            var gridViewScroll = new GridViewScroll(options);
+            var gridViewScroll = new GridViewScroll({
+                elementID : "gvMain",
+                freezeColumn : true,
+                freezeFooter : true,
+                freezeColumnCssClass : "GridViewScrollItemFreeze",
+                freezeFooterCssClass : "GridViewScrollFooterFreeze"
+            });
             gridViewScroll.enhance();
         }
     </script>

@@ -11,35 +11,47 @@ Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
 1. Download the [latest release](https://github.com/twlikol/GridViewScroll/archive/master.zip)
 2. Include the `gridviewscroll.js`
 ```html
-   <script type="text/javascript" src="js/gridviewscroll.js"></script>
+<script type="text/javascript" src="js/gridviewscroll.js"></script>
   ``` 
 3. Initialize table with options, then call `enhance`
-  ```html
-  <script type="text/javascript">
+```html
+<script type="text/javascript">
     window.onload = function () {
-        var options = new GridViewScrollOptions();
-        options.elementID = "gvMain";
-
-        var gridViewScroll = new GridViewScroll(options);
-        var gridViewScroll.enhance();
+        var gridViewScroll = new GridViewScroll({
+            elementID : "gvMain" // Target element id
+        });
+        gridViewScroll.enhance();
     }
-  </script>
-  ```
+</script>
+```
 
 ### Options
-**elementID**: `String`  
-**width**: `Integer (700)`  
-**height**: `Integer (350)`  
-**freezeColumn**: `Boolean (null)`  
-**freezeFooter**: `Boolean (null)`  
-**freezeColumnCssClass**: `String (null)`  
-**freezeFooterCssClass**: `String (null)`  
-**freezeHeaderRowCount**: `Integer (1)`  
-**freezeColumnCount**: `Integer (1)`  
+```html
+<script type="text/javascript">
+    var gridViewScroll = new GridViewScroll({
+        elementID : null, // String
+        width : "700", // Integer
+        height : "350", // Integer
+        freezeColumn : false, // Boolean
+        freezeFooter : false, // Boolean
+        freezeColumnCssClass : null, // String
+        freezeFooterCssClass : null, // String
+        freezeHeaderRowCount : 1, // Integer
+        freezeColumnCount : 1 // Integer
+    });
+</script>
+```
 
-### Public Methods
-**enhance()**: Apply the gridviewscroll features to element id.  
-**undo()**:  Undo the DOM changes when apply gridviewscroll.
+### Methods
+```html
+<script type="text/javascript">
+    var gridViewScroll = new GridViewScroll({
+        elementID : "gvMain",
+    });
+    gridViewScroll.enhance(); // Apply the gridviewscroll features
+    gridViewScroll.undo(); // Undo the DOM changes, And remove gridviewscroll features
+</script>
+```
 
 ### Supported Browsers
 * Internet Explorer 9+
