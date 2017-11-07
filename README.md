@@ -8,8 +8,8 @@ Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
 * Freeze Header, Column, Footer (only last row)
 
 ### Getting Started
-1. Download the [latest release](https://github.com/twlikol/GridViewScroll/archive/master.zip)
-2. Include the `gridviewscroll.js`
+1. Download the [latest release](https://github.com/twlikol/GridViewScroll/archive/master.zip) from GitHub
+2. Include the `gridviewscroll.js` in web page
 ```html
 <script type="text/javascript" src="js/gridviewscroll.js"></script>
   ``` 
