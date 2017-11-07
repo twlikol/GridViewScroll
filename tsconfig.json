@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "amd",
+    "target": "es5",
+    "types": [
+    ],
+    "lib": [ "es6", "dom" ],
+    "outDir": "js"
+  },
+  "compileOnSave": true,
+  "exclude": [ "bin", "typings" ]
+}
