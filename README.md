@@ -1,4 +1,4 @@
-## GridViewScroll - NEW
+﻿## GridViewScroll - NEW
 Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
 
 <img border="0" border="0" style="border:1px solid #EFEFEF;" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscrollv2_git.png?2017110701">
@@ -57,6 +57,9 @@ Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
 * Internet Explorer 9+
 * Google Chrome (61.0.3163.100)
 * Mozilla FireFox (56.0.2)
+
+### Copyright and license
+Copyright © Likol Lee. Licensed under the MIT license.
 
 ## GridViewScroll with jQuery (v0.9.6.8)
 This version is no longer supported, you can find in link:
