@@ -63,6 +63,12 @@ class GridViewScroll {
 
     constructor(options: GridViewScrollOptions) {
 
+        if (options.width == null)
+            options.width = 700;
+
+        if (options.height == null)
+            options.height = 350;
+
         if (options.freezeHeaderRowCount == null)
             options.freezeHeaderRowCount = 1;
 

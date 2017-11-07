@@ -21,6 +21,7 @@ Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "GridViewScroll", ".", "{644
 		Release.AspNetCompiler.FixedNames = "false"
 		Release.AspNetCompiler.Debug = "False"
 		VWDPort = "9744"
+		SlnRelativePath = "..\GridViewScroll\"
 	EndProjectSection
 EndProject
 Global

@@ -5,22 +5,41 @@ Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
 
 ### Features
 * Default scrollbar of browser
-* Freeze header 
-* Freeze colunn
-* Freeze footer (only last row)
-* RTL support
+* Freeze Header, Column, Footer (only last row)
 
-#### Developing features
-* Freeze more footer row
-* ASP.NET WebForms support
+### Getting Started
+1. Download the [latest release](https://github.com/twlikol/GridViewScroll/archive/master.zip)
+2. Include the `gridviewscroll.js`
+```html
+   <script type="text/javascript" src="js/gridviewscroll.js"></script>
+  ``` 
+3. Initialize table with options, then call `enhance`
+  ```html
+  <script type="text/javascript">
+    window.onload = function () {
+        var options = new GridViewScrollOptions();
+        options.elementID = "gvMain";
 
-#### Planned features
-* More public methods or events
-* Integrate custom modules
-* Performance improvement
+        var gridViewScroll = new GridViewScroll(options);
+        var gridViewScroll.enhance();
+    }
+  </script>
+  ```
 
-### Dependencies
-* None
+### Options
+**elementID**: `String`  
+**width**: `Integer (700)`  
+**height**: `Integer (350)`  
+**freezeColumn**: `Boolean (null)`  
+**freezeFooter**: `Boolean (null)`  
+**freezeColumnCssClass**: `String (null)`  
+**freezeFooterCssClass**: `String (null)`  
+**freezeHeaderRowCount**: `Integer (1)`  
+**freezeColumnCount**: `Integer (1)`  
+
+### Public Methods
+**enhance()**: Apply the gridviewscroll features to element id.  
+**undo()**:  Undo the DOM changes when apply gridviewscroll.
 
 ### Supported Browsers
 * Internet Explorer 9+

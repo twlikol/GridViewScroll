@@ -5,6 +5,10 @@ var GridViewScrollOptions = /** @class */ (function () {
 }());
 var GridViewScroll = /** @class */ (function () {
     function GridViewScroll(options) {
+        if (options.width == null)
+            options.width = 700;
+        if (options.height == null)
+            options.height = 350;
         if (options.freezeHeaderRowCount == null)
             options.freezeHeaderRowCount = 1;
         if (options.freezeColumnCount == null)
