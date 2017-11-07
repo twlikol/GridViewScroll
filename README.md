@@ -7,17 +7,16 @@ If you have any ideas, please let us know.
 
 **Features**
 * Default scrollbar of browser
-* Freeze header (only top row)
-* Freeze colunn (only first column)
+* Freeze header 
+* Freeze colunn
 * Freeze footer (only last row)
 * RTL support
 
 **Developing features**
-* Freeze more row or column
+* Freeze more footer row
+* ASP.NET WebForms support
 
 **Planned features**
-* Cell merge for header and footer row
-* Cell merge for item row
 * More public methods or events
 * Integrate custom modules
 * Performance improvement

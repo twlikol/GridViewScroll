@@ -21,6 +21,7 @@
                     options.freezeFooter = true;
                     options.freezeColumnCssClass = "GridViewScrollItemFreeze";
                     options.freezeFooterCssClass = "GridViewScrollFooterFreeze";
+                    options.freezeColumnCount = 2;
 
                     gridViewScroll = new Controls.GridViewScroll(options);
                     gridViewScroll.enhance();
@@ -51,7 +52,7 @@
 <body>
     <input type="button" value="Enhance" onclick="enhance();" />
     <input type="button" value="Undo" onclick="undo();" />
-    <br />
+    <br /><br />
     <table cellspacing="0" id="gvMain" style="width:100%;border-collapse:collapse;">
         <tr class="GridViewScrollHeader">
             <th>StandardCost<br/>123</th>
