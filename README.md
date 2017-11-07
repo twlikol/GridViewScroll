@@ -55,7 +55,8 @@ Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
 
 ### Supported Browsers
 * Internet Explorer 9+
-* Google Chrome
+* Google Chrome (61.0.3163.100)
+* Mozilla FireFox (56.0.2)
 
 ## GridViewScroll with jQuery (v0.9.6.8)
 This version is no longer supported, you can find in link:
