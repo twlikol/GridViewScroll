@@ -1,23 +1,3 @@
-## GridViewScroll with jQuery (vNext)
-We are developing a new version, we will try to complete all of the features.
-
-If you have any ideas, please let us know.
-
-### Support features
-* Freeze header and footer row (both only 1 row)
-* Freeze column
-* ASP.NET GridView Pager
-* RTL
-* Default scrollbar of browser
-
-### Developing features
-* Freeze more header and footer row
-* Cell merge for header and footer row
-* Cell merge for item row
-* More public methods or events
-* Integrate custom modules
-* Performance improvement
-
 ## GridViewScroll with jQuery (v0.9.6.8)
 Freeze column and fixed header in Table or GridView
 
