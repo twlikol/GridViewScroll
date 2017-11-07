@@ -9,10 +9,10 @@ Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
 * Freeze colunn
 * Freeze footer (only last row)
 * RTL support
-#### Developing features
+### Developing features
 * Freeze more footer row
 * ASP.NET WebForms support
-#### Planned features
+### Planned features
 * More public methods or events
 * Integrate custom modules
 * Performance improvement
