@@ -3,9 +3,6 @@ Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
 
 <img border="0" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscrollv2_git.png">
 
-### Dependencies
-* None
-
 ### Features
 * Default scrollbar of browser
 * Freeze header 
@@ -19,3 +16,8 @@ Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
   * More public methods or events
   * Integrate custom modules
   * Performance improvement
+### Dependencies
+* None
+### Supported Browsers
+* Internet Explorer 9+
+* Google Chrome
