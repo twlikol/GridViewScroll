@@ -4,43 +4,36 @@
     <meta charset="utf-8" />
     <title>GridViewScroll</title>
     <link href="css/web.css" rel="stylesheet" />
-    <script type="text/javascript" src="js/require-2.3.5.js"></script>
+    <script type="text/javascript" src="js/gridviewscroll.js"></script>
     <script type="text/javascript">
         var gridViewScroll = null;
-        require.config({
-            baseUrl: 'js'
-        });
-        require(['domReady'], function (domReady) {
-            domReady(function () {
-                require(['gridviewscroll'], function (Controls) {
-                    var options = new Controls.GridViewScrollOptions();
-                    options.elementID = "gvMain";
-                    options.width = 450;
-                    options.height = 300;
-                    options.freezeColumn = true;
-                    options.freezeFooter = true;
-                    options.freezeColumnCssClass = "GridViewScrollItemFreeze";
-                    options.freezeFooterCssClass = "GridViewScrollFooterFreeze";
-                    options.freezeColumnCount = 2;
+        window.onload = function () {
+            var options = new GridViewScrollOptions();
+            options.elementID = "gvMain";
+            options.width = 450;
+            options.height = 300;
+            options.freezeColumn = true;
+            options.freezeFooter = true;
+            options.freezeColumnCssClass = "GridViewScrollItemFreeze";
+            options.freezeFooterCssClass = "GridViewScrollFooterFreeze";
+            options.freezeColumnCount = 2;
 
-                    gridViewScroll = new Controls.GridViewScroll(options);
-                    gridViewScroll.enhance();
+            gridViewScroll = new GridViewScroll(options);
+            gridViewScroll.enhance();
 
-                    options.elementID = "gvMain2";
-                    var gridViewScroll2 = new Controls.GridViewScroll(options);
-                    gridViewScroll2.enhance();
+            options.elementID = "gvMain2";
+            var gridViewScroll2 = new GridViewScroll(options);
+            gridViewScroll2.enhance();
 
-                    options.elementID = "gvMain3";
-                    options.width = 600;
-                    var gridViewScroll3 = new Controls.GridViewScroll(options);
-                    gridViewScroll3.enhance();
+            options.elementID = "gvMain3";
+            options.width = 600;
+            var gridViewScroll3 = new GridViewScroll(options);
+            gridViewScroll3.enhance();
 
-                    options.elementID = "gvMain4";
-                    var gridViewScroll4 = new Controls.GridViewScroll(options);
-                    gridViewScroll4.enhance();
-                });
-            });
-        });
+            options.elementID = "gvMain4";
+            var gridViewScroll4 = new GridViewScroll(options);
+            gridViewScroll4.enhance();
+        }
         function enhance() {
             gridViewScroll.enhance();
         }

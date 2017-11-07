@@ -4,29 +4,22 @@
     <meta charset="utf-8" />
     <title>GridViewScroll</title>
     <link href="../css/web.css" rel="stylesheet" />
-    <script type="text/javascript" src="../js/require-2.3.5.js"></script>
+    <script type="text/javascript" src="../js/gridviewscroll.js"></script>
     <script type="text/javascript">
-        require.config({
-            baseUrl: '../js'
-        });
-        require(['domReady'], function (domReady) {
-            domReady(function () {
-                require(['gridviewscroll'], function (Controls) {
-                    var options = new Controls.GridViewScrollOptions();
-                    options.elementID = "gvMain";
-                    options.width = 650;
-                    options.height = 350;
-                    options.freezeColumn = true;
-                    options.freezeFooter = true;
-                    options.freezeColumnCssClass = "GridViewScrollItemFreeze";
-                    options.freezeFooterCssClass = "GridViewScrollFooterFreeze";
-                    options.freezeHeaderRowCount = 2;
-                    options.freezeColumnCount = 3;
+        window.onload = function () {
+            var options = new GridViewScrollOptions();
+            options.elementID = "gvMain";
+            options.width = 650;
+            options.height = 350;
+            options.freezeColumn = true;
+            options.freezeFooter = true;
+            options.freezeColumnCssClass = "GridViewScrollItemFreeze";
+            options.freezeFooterCssClass = "GridViewScrollFooterFreeze";
+            options.freezeHeaderRowCount = 2;
+            options.freezeColumnCount = 3;
 
-                    gridViewScroll = new Controls.GridViewScroll(options);
-                });
-            });
-        });
+            gridViewScroll = new GridViewScroll(options);
+        }
         function enhance() {
             gridViewScroll.enhance();
         }

@@ -1,5 +1,5 @@
 ﻿
-export class GridViewScrollOptions {
+class GridViewScrollOptions {
     elementID: string;
     width: number;
     height: number;
@@ -11,7 +11,7 @@ export class GridViewScrollOptions {
     freezeColumnCount: number;
 }
 
-export class GridViewScroll {
+class GridViewScroll {
 
     private GridID: string;
     private Width: number;

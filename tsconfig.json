@@ -1,6 +1,5 @@
 {
   "compilerOptions": {
-    "module": "amd",
     "target": "es5",
     "types": [
     ],
