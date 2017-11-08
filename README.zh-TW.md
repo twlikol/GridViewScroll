@@ -58,7 +58,10 @@
 * Google Chrome (61.0.3163.100)
 * Mozilla FireFox (56.0.2)
 
-### Copyright and license
+### 技術支援
+如果你有任何關於GridViewScoll的問題,你可以在GitHub的網站上填寫 [Issue](https://github.com/twlikol/GridViewScroll/issues/new) ,我們會盡力協助處理.
+
+### Copyright and License
 Copyright © Likol Lee. Licensed under the MIT license.
 
 ## GridViewScroll with jQuery (v0.9.6.8)
