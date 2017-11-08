@@ -59,7 +59,7 @@ Freeze column and fixed header in Table or GridView (ASP.NET WebForms)
 * Mozilla FireFox (56.0.2)
 
 ### Technical Support
-If you have any question with gridviewscroll welcome to [filing an issue](https://github.com/twlikol/GridViewScroll/issues/new), I will try my best to help.
+If you have any question with gridviewscroll welcome to [filing an issue](https://github.com/twlikol/GridViewScroll/issues/new) on GitHub, I will try my best to help.
 
 ### Copyright and License
 Copyright © Likol Lee. Licensed under the MIT license.
