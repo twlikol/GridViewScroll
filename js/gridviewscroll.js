@@ -31,8 +31,12 @@ var GridViewScroll = /** @class */ (function () {
         this.IsVerticalScrollbarEnabled = false;
         this.IsHorizontalScrollbarEnabled = false;
         this.ContentGrid = document.getElementById(this.GridID);
-        if (this.ContentGrid.rows.length < 2)
+        if (this.ContentGrid == null) {
             return;
+        }
+        if (this.ContentGrid.rows.length < 2) {
+            return;
+        }
         this.ContentGridHeaderRows = this.getGridHeaderRows();
         this.ContentGridItemRow = this.ContentGrid.rows.item(this.FreezeHeaderRowCount);
         var footerIndex = this.ContentGrid.rows.length - 1;

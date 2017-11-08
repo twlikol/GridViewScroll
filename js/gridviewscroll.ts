@@ -103,7 +103,13 @@ class GridViewScroll {
 
         this.ContentGrid = <HTMLTableElement>document.getElementById(this.GridID);
 
-        if (this.ContentGrid.rows.length < 2) return;
+        if (this.ContentGrid == null) {
+            return;
+        }
+
+        if (this.ContentGrid.rows.length < 2) {
+            return;
+        }
 
         this.ContentGridHeaderRows = this.getGridHeaderRows();
 
