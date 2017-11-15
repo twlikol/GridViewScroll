@@ -61,6 +61,8 @@ Freeze column and fixed header in Table or GridView
 ### Technical Support
 If you have any question with gridviewscroll welcome to [filing an issue](https://github.com/twlikol/GridViewScroll/issues/new) on GitHub, I will try my best to help.
 
+Or you can sned email to [twlikol@msn.com](mailto:twlikol@msn.com).
+
 ### Copyright and License
 Copyright © Likol Lee. Licensed under the MIT license.
 
