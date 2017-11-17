@@ -423,8 +423,6 @@ class GridViewScroll {
             this.ContentFreeze.style.height = String(this.ContentFixed.offsetHeight - this.ScrollbarWidth) + "px";
         }
 
-        console.log(this.ContentFreeze.style.height);
-
         this.ContentFreeze = this.Content.appendChild(this.ContentFreeze);
     }
 
