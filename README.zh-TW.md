@@ -61,6 +61,9 @@
 ### 技術支援
 如果你有任何關於GridViewScoll的問題,你可以在GitHub的網站上填寫 [Issue](https://github.com/twlikol/GridViewScroll/issues/new) ,我們會盡力協助處理.
 
+### 工具
+* [測試工具](http://gridviewscroll.aspcity.idv.tw/v2/testingtool.aspx) - 貼上你的表格與樣式HTML進行測試.
+
 或是你可以直接寄E-Mai: [twlikol@msn.com](mailto:twlikol@msn.com).
 
 ### Copyright and License
