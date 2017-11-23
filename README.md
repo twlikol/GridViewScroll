@@ -29,13 +29,13 @@ Freeze column and fixed header in Table or GridView
 ```html
 <script type="text/javascript">
     var gridViewScroll = new GridViewScroll({
-        elementID : null, // String
-        width : "700", // Integer
-        height : "350", // Integer
+        elementID : "", // String
+        width : 700, // Integer or String(Percentage)
+        height : 350, // Integer or String(Percentage)
         freezeColumn : false, // Boolean
         freezeFooter : false, // Boolean
-        freezeColumnCssClass : null, // String
-        freezeFooterCssClass : null, // String
+        freezeColumnCssClass : "", // String
+        freezeFooterCssClass : "", // String
         freezeHeaderRowCount : 1, // Integer
         freezeColumnCount : 1 // Integer
     });

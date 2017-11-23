@@ -1,8 +1,8 @@
 ﻿
 class GridViewScrollOptions {
     elementID: string;
-    width: number;
-    height: number;
+    width: string;
+    height: string;
     freezeColumn: boolean;
     freezeFooter: boolean;
     freezeColumnCssClass: string;
@@ -14,8 +14,13 @@ class GridViewScrollOptions {
 class GridViewScroll {
 
     private GridID: string;
+
+    private GridWidth: string;
+    private GridHeight: string;
+
     private Width: number;
     private Height: number;
+
     private FreezeColumn: boolean;
     private FreezeFooter: boolean;
     private FreezeColumnCssClass: string;
@@ -63,11 +68,20 @@ class GridViewScroll {
 
     constructor(options: GridViewScrollOptions) {
 
+        if (options.elementID == null)
+            options.elementID = "";
+
         if (options.width == null)
-            options.width = 700;
+            options.width = "700";
 
         if (options.height == null)
-            options.height = 350;
+            options.height = "350";
+
+        if (options.freezeColumnCssClass == null)
+            options.freezeColumnCssClass = "";
+
+        if (options.freezeFooterCssClass == null)
+            options.freezeFooterCssClass = "";
 
         if (options.freezeHeaderRowCount == null)
             options.freezeHeaderRowCount = 1;
@@ -81,8 +95,8 @@ class GridViewScroll {
     private initializeOptions(options: GridViewScrollOptions) {
         this.GridID = options.elementID;
 
-        this.Width = options.width;
-        this.Height = options.height;
+        this.GridWidth = options.width;
+        this.GridHeight = options.height;
 
         this.FreezeColumn = options.freezeColumn;
         this.FreezeFooter = options.freezeFooter;
@@ -101,6 +115,10 @@ class GridViewScroll {
         this.IsVerticalScrollbarEnabled = false;
         this.IsHorizontalScrollbarEnabled = false;
 
+        if (this.GridID == null || this.GridID == "") {
+            return;
+        }
+
         this.ContentGrid = <HTMLTableElement>document.getElementById(this.GridID);
 
         if (this.ContentGrid == null) {
@@ -111,15 +129,35 @@ class GridViewScroll {
             return;
         }
 
+        this.Parent = <HTMLElement>this.ContentGrid.parentNode;
+
+        this.ContentGrid.style.display = "none";
+
+        if (typeof this.GridWidth == 'string') {
+            var percentage = parseInt(this.GridWidth);
+            this.Width = this.Parent.offsetWidth * percentage / 100;
+        }
+        else {
+            this.Width = parseInt(this.GridWidth);
+        }
+
+        if (typeof this.GridHeight == 'string') {
+            var percentage = parseInt(this.GridHeight);
+            this.Height = this.Parent.offsetHeight * percentage / 100;
+        }
+        else {
+            this.Height = parseInt(this.GridHeight);
+        }
+
+        this.ContentGrid.style.display = "";
+
         this.ContentGridHeaderRows = this.getGridHeaderRows();
 
         this.ContentGridItemRow = this.ContentGrid.rows.item(this.FreezeHeaderRowCount);
 
         let footerIndex = this.ContentGrid.rows.length - 1;
 
-        this.ContentGridFooterRow = this.ContentGrid.rows.item(footerIndex);
-
-        this.Parent = <HTMLElement>this.ContentGrid.parentNode;
+        this.ContentGridFooterRow = this.ContentGrid.rows.item(footerIndex);        
 
         this.Content = <HTMLDivElement>document.createElement('div');
         this.Content.id = this.GridID + "_Content";
@@ -382,7 +420,7 @@ class GridViewScroll {
 
             let cgridItemCell = gridItemCell.cloneNode(true);
 
-            if (this.FreezeColumnCssClass != null)
+            if (this.FreezeColumnCssClass != null || this.FreezeColumnCssClass != "")
                 cgridItemRow.className = this.FreezeColumnCssClass;
 
             let columnIndex = 0;
@@ -442,7 +480,7 @@ class GridViewScroll {
 
         this.FooterFreezeGridHeaderRow = <HTMLTableRowElement>this.ContentGridFooterRow.cloneNode(true);
 
-        if (this.FreezeFooterCssClass != null)
+        if (this.FreezeFooterCssClass != null || this.FreezeFooterCssClass != "")
             this.FooterFreezeGridHeaderRow.className = this.FreezeFooterCssClass;
 
         for (var i = 0; i < this.FooterFreezeGridHeaderRow.cells.length; i++) {

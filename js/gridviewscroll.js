@@ -5,10 +5,16 @@ var GridViewScrollOptions = /** @class */ (function () {
 }());
 var GridViewScroll = /** @class */ (function () {
     function GridViewScroll(options) {
+        if (options.elementID == null)
+            options.elementID = "";
         if (options.width == null)
-            options.width = 700;
+            options.width = "700";
         if (options.height == null)
-            options.height = 350;
+            options.height = "350";
+        if (options.freezeColumnCssClass == null)
+            options.freezeColumnCssClass = "";
+        if (options.freezeFooterCssClass == null)
+            options.freezeFooterCssClass = "";
         if (options.freezeHeaderRowCount == null)
             options.freezeHeaderRowCount = 1;
         if (options.freezeColumnCount == null)
@@ -17,8 +23,8 @@ var GridViewScroll = /** @class */ (function () {
     }
     GridViewScroll.prototype.initializeOptions = function (options) {
         this.GridID = options.elementID;
-        this.Width = options.width;
-        this.Height = options.height;
+        this.GridWidth = options.width;
+        this.GridHeight = options.height;
         this.FreezeColumn = options.freezeColumn;
         this.FreezeFooter = options.freezeFooter;
         this.FreezeColumnCssClass = options.freezeColumnCssClass;
@@ -30,6 +36,9 @@ var GridViewScroll = /** @class */ (function () {
         this.FreezeCellWidths = [];
         this.IsVerticalScrollbarEnabled = false;
         this.IsHorizontalScrollbarEnabled = false;
+        if (this.GridID == null || this.GridID == "") {
+            return;
+        }
         this.ContentGrid = document.getElementById(this.GridID);
         if (this.ContentGrid == null) {
             return;
@@ -37,11 +46,27 @@ var GridViewScroll = /** @class */ (function () {
         if (this.ContentGrid.rows.length < 2) {
             return;
         }
+        this.Parent = this.ContentGrid.parentNode;
+        this.ContentGrid.style.display = "none";
+        if (typeof this.GridWidth == 'string') {
+            var percentage = parseInt(this.GridWidth);
+            this.Width = this.Parent.offsetWidth * percentage / 100;
+        }
+        else {
+            this.Width = parseInt(this.GridWidth);
+        }
+        if (typeof this.GridHeight == 'string') {
+            var percentage = parseInt(this.GridHeight);
+            this.Height = this.Parent.offsetHeight * percentage / 100;
+        }
+        else {
+            this.Height = parseInt(this.GridHeight);
+        }
+        this.ContentGrid.style.display = "";
         this.ContentGridHeaderRows = this.getGridHeaderRows();
         this.ContentGridItemRow = this.ContentGrid.rows.item(this.FreezeHeaderRowCount);
         var footerIndex = this.ContentGrid.rows.length - 1;
         this.ContentGridFooterRow = this.ContentGrid.rows.item(footerIndex);
-        this.Parent = this.ContentGrid.parentNode;
         this.Content = document.createElement('div');
         this.Content.id = this.GridID + "_Content";
         this.Content.style.position = "relative";
@@ -222,7 +247,7 @@ var GridViewScroll = /** @class */ (function () {
             freezeCellHeights.push(helperHeight);
             var cgridItemRow = gridItemRow.cloneNode(false);
             var cgridItemCell = gridItemCell.cloneNode(true);
-            if (this.FreezeColumnCssClass != null)
+            if (this.FreezeColumnCssClass != null || this.FreezeColumnCssClass != "")
                 cgridItemRow.className = this.FreezeColumnCssClass;
             var columnIndex = 0;
             var columnCount = 0;
@@ -263,7 +288,7 @@ var GridViewScroll = /** @class */ (function () {
         this.FooterFreezeGrid.id = this.GridID + "_Footer_Freeze_Grid";
         this.FooterFreezeGrid = this.FooterFreeze.appendChild(this.FooterFreezeGrid);
         this.FooterFreezeGridHeaderRow = this.ContentGridFooterRow.cloneNode(true);
-        if (this.FreezeFooterCssClass != null)
+        if (this.FreezeFooterCssClass != null || this.FreezeFooterCssClass != "")
             this.FooterFreezeGridHeaderRow.className = this.FreezeFooterCssClass;
         for (var i = 0; i < this.FooterFreezeGridHeaderRow.cells.length; i++) {
             var cgridHeaderCell = this.FooterFreezeGridHeaderRow.cells.item(i);
