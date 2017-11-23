@@ -13,6 +13,8 @@ class GridViewScrollOptions {
 
 class GridViewScroll {
 
+    private _initialized: boolean;
+
     private GridID: string;
 
     private GridWidth: string;
@@ -68,6 +70,8 @@ class GridViewScroll {
 
     constructor(options: GridViewScrollOptions) {
 
+        this._initialized = false;
+
         if (options.elementID == null)
             options.elementID = "";
 
@@ -109,7 +113,7 @@ class GridViewScroll {
     }
 
     enhance(): void {
-
+        
         this.FreezeCellWidths = [];
 
         this.IsVerticalScrollbarEnabled = false;
@@ -128,6 +132,12 @@ class GridViewScroll {
         if (this.ContentGrid.rows.length < 2) {
             return;
         }
+
+        if (this._initialized) {
+            this.undo();
+        }
+
+        this._initialized = true;
 
         this.Parent = <HTMLElement>this.ContentGrid.parentNode;
 
@@ -628,6 +638,8 @@ class GridViewScroll {
 
         this.Parent.removeChild(this.Header);
         this.Parent.removeChild(this.Content);
+
+        this._initialized = false;
     }
 
     private undoHelperElement(): void {
@@ -641,6 +653,21 @@ class GridViewScroll {
             }
 
             gridItemCell.removeChild(helperElement);
+        }
+
+        if (this.FreezeColumn) {
+            for (var i = 2; i < this.ContentGrid.rows.length; i++) {
+                let gridItemRow = this.ContentGrid.rows.item(i);
+                let gridItemCell = gridItemRow.cells.item(0);
+
+                let helperElement = <HTMLDivElement>gridItemCell.firstChild;
+
+                while (helperElement.hasChildNodes()) {
+                    gridItemCell.appendChild(helperElement.firstChild);
+                }
+
+                gridItemCell.removeChild(helperElement);
+            }
         }
     }
 }

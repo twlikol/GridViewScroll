@@ -5,6 +5,7 @@ var GridViewScrollOptions = /** @class */ (function () {
 }());
 var GridViewScroll = /** @class */ (function () {
     function GridViewScroll(options) {
+        this._initialized = false;
         if (options.elementID == null)
             options.elementID = "";
         if (options.width == null)
@@ -46,6 +47,10 @@ var GridViewScroll = /** @class */ (function () {
         if (this.ContentGrid.rows.length < 2) {
             return;
         }
+        if (this._initialized) {
+            this.undo();
+        }
+        this._initialized = true;
         this.Parent = this.ContentGrid.parentNode;
         this.ContentGrid.style.display = "none";
         if (typeof this.GridWidth == 'string' && this.GridWidth.indexOf("%") > -1) {
@@ -401,6 +406,7 @@ var GridViewScroll = /** @class */ (function () {
         this.Parent.insertBefore(this.ContentGrid, this.Header);
         this.Parent.removeChild(this.Header);
         this.Parent.removeChild(this.Content);
+        this._initialized = false;
     };
     GridViewScroll.prototype.undoHelperElement = function () {
         for (var i = 0; i < this.ContentGridItemRow.cells.length; i++) {
@@ -410,6 +416,17 @@ var GridViewScroll = /** @class */ (function () {
                 gridItemCell.appendChild(helperElement.firstChild);
             }
             gridItemCell.removeChild(helperElement);
+        }
+        if (this.FreezeColumn) {
+            for (var i = 2; i < this.ContentGrid.rows.length; i++) {
+                var gridItemRow = this.ContentGrid.rows.item(i);
+                var gridItemCell = gridItemRow.cells.item(0);
+                var helperElement = gridItemCell.firstChild;
+                while (helperElement.hasChildNodes()) {
+                    gridItemCell.appendChild(helperElement.firstChild);
+                }
+                gridItemCell.removeChild(helperElement);
+            }
         }
     };
     return GridViewScroll;
