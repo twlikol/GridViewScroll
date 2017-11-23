@@ -48,14 +48,14 @@ var GridViewScroll = /** @class */ (function () {
         }
         this.Parent = this.ContentGrid.parentNode;
         this.ContentGrid.style.display = "none";
-        if (typeof this.GridWidth == 'string') {
+        if (typeof this.GridWidth == 'string' && this.GridWidth.indexOf("%") > -1) {
             var percentage = parseInt(this.GridWidth);
             this.Width = this.Parent.offsetWidth * percentage / 100;
         }
         else {
             this.Width = parseInt(this.GridWidth);
         }
-        if (typeof this.GridHeight == 'string') {
+        if (typeof this.GridHeight == 'string' && this.GridHeight.indexOf("%") > -1) {
             var percentage = parseInt(this.GridHeight);
             this.Height = this.Parent.offsetHeight * percentage / 100;
         }
