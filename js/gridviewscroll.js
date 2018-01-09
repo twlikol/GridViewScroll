@@ -20,6 +20,8 @@ var GridViewScroll = /** @class */ (function () {
             options.freezeHeaderRowCount = 1;
         if (options.freezeColumnCount == null)
             options.freezeColumnCount = 1;
+        if (options.containerID == null)
+            options.containerID = "";
         this.initializeOptions(options);
     }
     GridViewScroll.prototype.initializeOptions = function (options) {
@@ -32,6 +34,8 @@ var GridViewScroll = /** @class */ (function () {
         this.FreezeFooterCssClass = options.freezeFooterCssClass;
         this.FreezeHeaderRowCount = options.freezeHeaderRowCount;
         this.FreezeColumnCount = options.freezeColumnCount;
+        this.containerID = options.containerID;
+
     };
     GridViewScroll.prototype.enhance = function () {
         this.FreezeCellWidths = [];
@@ -53,20 +57,29 @@ var GridViewScroll = /** @class */ (function () {
         this._initialized = true;
         this.Parent = this.ContentGrid.parentNode;
         this.ContentGrid.style.display = "none";
-        if (typeof this.GridWidth == 'string' && this.GridWidth.indexOf("%") > -1) {
-            var percentage = parseInt(this.GridWidth);
-            this.Width = this.Parent.offsetWidth * percentage / 100;
+
+        if (this.containerID == null || this.containerID == "") {
+            if (typeof this.GridWidth == 'string' && this.GridWidth.indexOf("%") > -1) {
+                var percentage = parseInt(this.GridWidth);
+                this.Width = this.Parent.offsetWidth * percentage / 100;
+            }
+            else {
+                this.Width = parseInt(this.GridWidth);
+            }
+
+            if (typeof this.GridHeight == 'string' && this.GridHeight.indexOf("%") > -1) {
+                var percentage = parseInt(this.GridHeight);
+                this.Height = this.Parent.offsetHeight * percentage / 100;
+            }
+            else {
+                this.Height = parseInt(this.GridHeight);
+            }
         }
         else {
-            this.Width = parseInt(this.GridWidth);
+            this.Width = document.getElementById(this.containerID).clientWidth;
+            this.Height = document.getElementById(this.containerID).clientHeight;
         }
-        if (typeof this.GridHeight == 'string' && this.GridHeight.indexOf("%") > -1) {
-            var percentage = parseInt(this.GridHeight);
-            this.Height = this.Parent.offsetHeight * percentage / 100;
-        }
-        else {
-            this.Height = parseInt(this.GridHeight);
-        }
+       
         this.ContentGrid.style.display = "";
         this.ContentGridHeaderRows = this.getGridHeaderRows();
         this.ContentGridItemRow = this.ContentGrid.rows.item(this.FreezeHeaderRowCount);
