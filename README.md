@@ -48,6 +48,7 @@ Freeze column and fixed header in Table or GridView
     var gridViewScroll = new GridViewScroll({
         elementID : "gvMain"
     });
+    gridViewScroll.enhance();
     var scrollPosition = gridViewScroll.scrollPosition // get scroll position
     var scrollTop = scrollPosition.scrollTop;
     var scrollLeft = scrollPosition.scrollLeft;
@@ -74,6 +75,7 @@ Freeze column and fixed header in Table or GridView
             console.log("scrollTop: " + scrollTop + ", scrollLeft: " + scrollLeft);
         }
     });
+    gridViewScroll.enhance();
 </script>
 ```
 
