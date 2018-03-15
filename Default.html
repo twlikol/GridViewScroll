@@ -17,13 +17,21 @@
                 freezeColumnCssClass: "GridViewScrollItemFreeze",
                 freezeFooterCssClass: "GridViewScrollFooterFreeze",
                 freezeHeaderRowCount: 2,
-                freezeColumnCount: 3
+                freezeColumnCount: 3,
+                onscroll: function (scrollTop, scrollLeft) {
+                    console.log(scrollTop + " - " + scrollLeft);
+                }
             });
             gridViewScroll.enhance();
+        }
+        function getScrollPosition() {
+            var position = gridViewScroll.scrollPosition;
+            alert("scrollTop: " + position.scrollTop + ", scrollLeft: " + position.scrollLeft);
         }
     </script>
 </head>
 <body>
+    <input type="button" value="getScrollPosition" onclick="getScrollPosition()">
     <table cellspacing="0" id="gvMain" style="width: 100%; border-collapse: collapse;">
         <tr class="GridViewScrollHeader">
             <td colspan="3" style="background-color: #F4F4F4;">Product</td>

@@ -1,7 +1,31 @@
+/*
+ * GridViewScroll with jQuery v1.0.0.1
+ * http://gridviewscroll.aspcity.idv.tw/
+
+ * Copyright (c) 2017 Likol Lee
+ * Released under the MIT license
+
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ */
 var GridViewScrollOptions = /** @class */ (function () {
     function GridViewScrollOptions() {
     }
     return GridViewScrollOptions;
+}());
+var GridViewScrollScrollPosition = /** @class */ (function () {
+    function GridViewScrollScrollPosition() {
+    }
+    return GridViewScrollScrollPosition;
 }());
 var GridViewScroll = /** @class */ (function () {
     function GridViewScroll(options) {
@@ -32,6 +56,7 @@ var GridViewScroll = /** @class */ (function () {
         this.FreezeFooterCssClass = options.freezeFooterCssClass;
         this.FreezeHeaderRowCount = options.freezeHeaderRowCount;
         this.FreezeColumnCount = options.freezeColumnCount;
+        this.OnScroll = options.onscroll;
     };
     GridViewScroll.prototype.enhance = function () {
         this.FreezeCellWidths = [];
@@ -130,13 +155,32 @@ var GridViewScroll = /** @class */ (function () {
         }
         var self = this;
         this.ContentFixed.onscroll = function (event) {
-            self.HeaderFixed.scrollLeft = self.ContentFixed.scrollLeft;
+            var scrollTop = self.ContentFixed.scrollTop;
+            var scrollLeft = self.ContentFixed.scrollLeft;
+            self.HeaderFixed.scrollLeft = scrollLeft;
             if (self.ContentFreeze != null)
-                self.ContentFreeze.scrollTop = self.ContentFixed.scrollTop;
+                self.ContentFreeze.scrollTop = scrollTop;
             if (self.FooterFreeze != null)
-                self.FooterFreeze.scrollLeft = self.ContentFixed.scrollLeft;
+                self.FooterFreeze.scrollLeft = scrollLeft;
+            if (self.OnScroll != null) {
+                self.OnScroll(scrollTop, scrollLeft);
+            }
         };
     };
+    Object.defineProperty(GridViewScroll.prototype, "scrollPosition", {
+        get: function () {
+            var position = new GridViewScrollScrollPosition();
+            position.scrollTop = this.ContentFixed.scrollTop;
+            position.scrollLeft = this.ContentFixed.scrollLeft;
+            return position;
+        },
+        set: function (gridViewScrollScrollPosition) {
+            this.ContentFixed.scrollTop = gridViewScrollScrollPosition.scrollTop;
+            this.ContentFixed.scrollLeft = gridViewScrollScrollPosition.scrollLeft;
+        },
+        enumerable: true,
+        configurable: true
+    });
     GridViewScroll.prototype.getGridHeaderRows = function () {
         var gridHeaderRows = new Array();
         for (var i = 0; i < this.FreezeHeaderRowCount; i++) {

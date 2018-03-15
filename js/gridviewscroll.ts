@@ -1,4 +1,22 @@
-﻿
+﻿/*
+ * GridViewScroll with jQuery v1.0.0.1
+ * http://gridviewscroll.aspcity.idv.tw/
+
+ * Copyright (c) 2017 Likol Lee
+ * Released under the MIT license
+
+ * Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions: 
+
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. 
+
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
+ * THE SOFTWARE.
+ */
 class GridViewScrollOptions {
     elementID: string;
     width: string;
@@ -9,11 +27,22 @@ class GridViewScrollOptions {
     freezeFooterCssClass: string;
     freezeHeaderRowCount: number;
     freezeColumnCount: number;
+
+    onscroll: GridViewScrollOnScroll;
 }
+
+class GridViewScrollScrollPosition {
+    scrollTop: number;
+    scrollLeft: number;
+}
+
+type GridViewScrollOnScroll = (scrollTop: number, scrollLeft: number) => any;
 
 class GridViewScroll {
 
     private _initialized: boolean;
+
+    private OnScroll: GridViewScrollOnScroll;
 
     private GridID: string;
 
@@ -110,6 +139,8 @@ class GridViewScroll {
 
         this.FreezeHeaderRowCount = options.freezeHeaderRowCount;
         this.FreezeColumnCount = options.freezeColumnCount;
+
+        this.OnScroll = options.onscroll;
     }
 
     enhance(): void {
@@ -248,14 +279,35 @@ class GridViewScroll {
         var self = this;
 
         this.ContentFixed.onscroll = function (event: UIEvent) {
-            self.HeaderFixed.scrollLeft = self.ContentFixed.scrollLeft;
+
+            let scrollTop = self.ContentFixed.scrollTop;
+            let scrollLeft = self.ContentFixed.scrollLeft;            
+
+            self.HeaderFixed.scrollLeft = scrollLeft;
 
             if(self.ContentFreeze != null)
-                self.ContentFreeze.scrollTop = self.ContentFixed.scrollTop;
+                self.ContentFreeze.scrollTop = scrollTop;
 
             if (self.FooterFreeze != null)
-                self.FooterFreeze.scrollLeft = self.ContentFixed.scrollLeft;
+                self.FooterFreeze.scrollLeft = scrollLeft;
+
+            if (self.OnScroll != null) {
+                self.OnScroll(scrollTop, scrollLeft)
+            }
         }
+    }
+
+    get scrollPosition() {
+        let position = new GridViewScrollScrollPosition();
+        position.scrollTop = this.ContentFixed.scrollTop;
+        position.scrollLeft = this.ContentFixed.scrollLeft;
+
+        return position;
+    }
+
+    set scrollPosition(gridViewScrollScrollPosition: GridViewScrollScrollPosition) {
+        this.ContentFixed.scrollTop = gridViewScrollScrollPosition.scrollTop;
+        this.ContentFixed.scrollLeft = gridViewScrollScrollPosition.scrollLeft;
     }
 
     private getGridHeaderRows() : Array<HTMLTableRowElement> {
