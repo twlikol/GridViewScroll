@@ -37,8 +37,20 @@ Freeze column and fixed header in Table or GridView
         freezeColumnCssClass : "", // String
         freezeFooterCssClass : "", // String
         freezeHeaderRowCount : 1, // Integer
-        freezeColumnCount : 1 // Integer
+        freezeColumnCount : 1, // Integer
+        onscroll: function (scrollTop, scrollLeft) // onscroll event callback
     });
+</script>
+```
+### Properties
+```html
+<script type="text/javascript">
+    var gridViewScroll = new GridViewScroll({
+        elementID : "gvMain"
+    });
+    var scrollPosition = gridViewScroll.scrollPosition // get scroll position
+    var scrollTop = scrollPosition.scrollTop;
+    var scrollLeft = scrollPosition.scrollLeft;
 </script>
 ```
 
@@ -46,10 +58,22 @@ Freeze column and fixed header in Table or GridView
 ```html
 <script type="text/javascript">
     var gridViewScroll = new GridViewScroll({
-        elementID : "gvMain",
+        elementID : "gvMain"
     });
     gridViewScroll.enhance(); // Apply the gridviewscroll features
     gridViewScroll.undo(); // Undo the DOM changes, And remove gridviewscroll features
+</script>
+```
+
+### Events
+```html
+<script type="text/javascript">
+    var gridViewScroll = new GridViewScroll({
+        elementID : "gvMain",
+        onscroll: function (scrollTop, scrollLeft) {
+            console.log("scrollTop: " + scrollTop + ", scrollLeft: " + scrollLeft);
+        }
+    });
 </script>
 ```
 
