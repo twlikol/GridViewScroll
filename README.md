@@ -42,6 +42,7 @@ Freeze column and fixed header in Table or GridView
     });
 </script>
 ```
+
 ### Properties
 ```html
 <script type="text/javascript">
@@ -54,7 +55,7 @@ Freeze column and fixed header in Table or GridView
     var scrollLeft = scrollPosition.scrollLeft;
   
     var scrollPosition = { scrollTop: 50, scrollLeft: 50};
-    gridViewScroll.scrollPosition = scrollPosition;
+    gridViewScroll.scrollPosition = scrollPosition; // set scroll position
 </script>
 ```
 
