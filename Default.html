@@ -29,9 +29,7 @@
             alert("scrollTop: " + position.scrollTop + ", scrollLeft: " + position.scrollLeft);
         }
         function setScrollPosition() {
-            var scrollPosition = new GridViewScrollScrollPosition();
-            scrollPosition.scrollTop = 50;
-            scrollPosition.scrollLeft = 50;
+            var scrollPosition = { scrollTop: 50, scrollLeft: 50};
 
             gridViewScroll.scrollPosition = scrollPosition;
         }
