@@ -281,7 +281,7 @@ class GridViewScroll {
         this.ContentFixed.onscroll = function (event: UIEvent) {
 
             let scrollTop = self.ContentFixed.scrollTop;
-            let scrollLeft = self.ContentFixed.scrollLeft;            
+            let scrollLeft = self.ContentFixed.scrollLeft;
 
             self.HeaderFixed.scrollLeft = scrollLeft;
 
@@ -306,8 +306,18 @@ class GridViewScroll {
     }
 
     set scrollPosition(gridViewScrollScrollPosition: GridViewScrollScrollPosition) {
-        this.ContentFixed.scrollTop = gridViewScrollScrollPosition.scrollTop;
-        this.ContentFixed.scrollLeft = gridViewScrollScrollPosition.scrollLeft;
+
+        let scrollTop = gridViewScrollScrollPosition.scrollTop;
+        let scrollLeft = gridViewScrollScrollPosition.scrollLeft;
+
+        this.ContentFixed.scrollTop = scrollTop;
+        this.ContentFixed.scrollLeft = scrollLeft;
+
+        if (this.ContentFreeze != null)
+            this.ContentFreeze.scrollTop = scrollTop;
+
+        if (this.FooterFreeze != null)
+            this.FooterFreeze.scrollLeft = scrollLeft;
     }
 
     private getGridHeaderRows() : Array<HTMLTableRowElement> {

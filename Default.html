@@ -28,10 +28,18 @@
             var position = gridViewScroll.scrollPosition;
             alert("scrollTop: " + position.scrollTop + ", scrollLeft: " + position.scrollLeft);
         }
+        function setScrollPosition() {
+            var scrollPosition = new GridViewScrollScrollPosition();
+            scrollPosition.scrollTop = 50;
+            scrollPosition.scrollLeft = 50;
+
+            gridViewScroll.scrollPosition = scrollPosition;
+        }
     </script>
 </head>
 <body>
     <input type="button" value="getScrollPosition" onclick="getScrollPosition()">
+    <input type="button" value="setScrollPosition" onclick="setScrollPosition()">
     <table cellspacing="0" id="gvMain" style="width: 100%; border-collapse: collapse;">
         <tr class="GridViewScrollHeader">
             <td colspan="3" style="background-color: #F4F4F4;">Product</td>

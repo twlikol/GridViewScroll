@@ -175,8 +175,14 @@ var GridViewScroll = /** @class */ (function () {
             return position;
         },
         set: function (gridViewScrollScrollPosition) {
-            this.ContentFixed.scrollTop = gridViewScrollScrollPosition.scrollTop;
-            this.ContentFixed.scrollLeft = gridViewScrollScrollPosition.scrollLeft;
+            var scrollTop = gridViewScrollScrollPosition.scrollTop;
+            var scrollLeft = gridViewScrollScrollPosition.scrollLeft;
+            this.ContentFixed.scrollTop = scrollTop;
+            this.ContentFixed.scrollLeft = scrollLeft;
+            if (this.ContentFreeze != null)
+                this.ContentFreeze.scrollTop = scrollTop;
+            if (this.FooterFreeze != null)
+                this.FooterFreeze.scrollLeft = scrollLeft;
         },
         enumerable: true,
         configurable: true
