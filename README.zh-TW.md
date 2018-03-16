@@ -37,8 +37,24 @@
         freezeColumnCssClass : "", // String
         freezeFooterCssClass : "", // String
         freezeHeaderRowCount : 1, // Integer
-        freezeColumnCount : 1 // Integer
+        freezeColumnCount : 1, // Integer
+        onscroll: function (scrollTop, scrollLeft) // 卷軸捲動事件
+    });
+</script>
+```
+### 屬性
+```html
+<script type="text/javascript">
+    var gridViewScroll = new GridViewScroll({
+        elementID : "gvMain"
     });
+    gridViewScroll.enhance();
+    var scrollPosition = gridViewScroll.scrollPosition // 取得卷軸位置
+    var scrollTop = scrollPosition.scrollTop;
+    var scrollLeft = scrollPosition.scrollLeft;
+  
+    var scrollPosition = { scrollTop: 50, scrollLeft: 50};
+    gridViewScroll.scrollPosition = scrollPosition; // 設定卷軸位置
 </script>
 ```
 
@@ -50,6 +66,19 @@
     });
     gridViewScroll.enhance(); // 套用 gridviewscroll 功能
     gridViewScroll.undo(); // 復原 DOM 的變更, 並移除 gridviewscroll 功能
+</script>
+```
+
+### 事件
+```html
+<script type="text/javascript">
+    var gridViewScroll = new GridViewScroll({
+        elementID : "gvMain",
+        onscroll: function (scrollTop, scrollLeft) {
+            console.log("scrollTop: " + scrollTop + ", scrollLeft: " + scrollLeft);
+        }
+    });
+    gridViewScroll.enhance();
 </script>
 ```
 
