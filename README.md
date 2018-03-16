@@ -52,6 +52,9 @@ Freeze column and fixed header in Table or GridView
     var scrollPosition = gridViewScroll.scrollPosition // get scroll position
     var scrollTop = scrollPosition.scrollTop;
     var scrollLeft = scrollPosition.scrollLeft;
+  
+    var scrollPosition = { scrollTop: 50, scrollLeft: 50};
+    gridViewScroll.scrollPosition = scrollPosition;
 </script>
 ```
 
