@@ -1,5 +1,5 @@
 ﻿/*
- * GridViewScroll with jQuery v1.0.0.1
+ * GridViewScroll with jQuery v1.0.0.3
  * http://gridviewscroll.aspcity.idv.tw/
 
  * Copyright (c) 2017 Likol Lee
@@ -225,7 +225,6 @@ class GridViewScroll {
 
         this.Header = <HTMLDivElement>document.createElement('div');
         this.Header.id = this.GridID + "_Header";
-        this.Header.style.backgroundColor = "#F0F0F0";
         this.Header.style.position = "relative";
 
         this.HeaderFixed = <HTMLDivElement>document.createElement('div');
