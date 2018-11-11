@@ -1,8 +1,6 @@
 ## GridViewScroll with jQuery (v0.9.6.8)
 Freeze column and fixed header in Table or GridView
 
-<img border="0" width="760px" border="0" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscroll_git.png">
-
 ### Dependencies
 * jQuery 1.8.2+
 http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js
