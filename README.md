@@ -1,7 +1,7 @@
 ﻿## GridViewScroll - NEW
 Freeze column and fixed header in Table or GridView
 
-<img border="0" border="0" style="border:1px solid #EFEFEF;" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscrollv2_git.gif?2017110802">
+<img border="0" border="0" style="border:1px solid #EFEFEF;" src="https://github.com/twlikol/GridViewScroll/raw/master/gridviewscrollv2_git.gif">
 
 ### Features
 * Default scrollbar of browser
