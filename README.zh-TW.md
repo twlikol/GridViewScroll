@@ -1,7 +1,7 @@
 ﻿## GridViewScroll - 新版
 將 您 的 表 格 或 GridView 固 定 標 題 列 與 凍 結 欄 位
 
-<img border="0" border="0" style="border:1px solid #EFEFEF;" src="http://gridviewscroll.aspcity.idv.tw/images/gridviewscrollv2_git.gif?2017110802">
+<img border="0" border="0" style="border:1px solid #EFEFEF;" src="https://github.com/twlikol/GridViewScroll/raw/master/gridviewscrollv2_git.gif">
 
 ### 支援的功能
 * 使用瀏覽器預設捲軸
